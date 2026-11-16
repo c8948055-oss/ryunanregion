@@ -105,6 +105,43 @@ img:not(#lbImg):focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .professor-partners .pokemon-link{white-space:normal}
 @media(max-width:900px){#professors{grid-template-columns:1fr}.professor-portrait img{height:220px}}
 @media(max-width:520px){.professor-card{grid-template-columns:112px minmax(0,1fr)}.professor-portrait img{height:190px}.professor-card-body{padding:12px}.professor-card-body h3{font-size:16px}.professor-card-body p,.professor-work{font-size:11px}.professor-partners .pokemon-link{font-size:10px;padding:4px 7px}.pokemon-mini{width:28px;height:28px}}
+
+/* 2026-11 visual cleanup: remove dead space in portrait panels and keep badge artwork at native sprite scale */
+.professor-card{grid-template-columns:170px minmax(0,1fr)}
+.professor-portrait{height:auto;min-height:360px;align-items:stretch;padding:0;background:linear-gradient(180deg,#f8fbfa,#edf5f4)}
+.professor-portrait img{display:block;width:100%;height:100%;min-height:360px;object-fit:contain;object-position:center bottom;transform:scale(1.42);transform-origin:center bottom}
+.gym{grid-template-columns:minmax(205px,.72fr) minmax(0,1.28fr)}
+.gym-portrait{min-height:390px;align-items:stretch;background:linear-gradient(180deg,#f8fbfa,#edf5f4);overflow:hidden}
+.gym-portrait img{display:block;width:100%;height:100%;min-height:390px;object-fit:contain;object-position:center bottom;transform:scale(1.48);transform-origin:center bottom}
+.gym-badge-slot{flex:0 0 88px;width:88px;min-height:100px;padding:5px 4px;background:#fff}
+.gym-badge-art{width:64px;height:64px;margin:0 auto 4px;background-size:400% 200%;image-rendering:auto}
+@media(max-width:900px){
+ .professor-card{grid-template-columns:150px minmax(0,1fr)}
+ .professor-portrait,.professor-portrait img{min-height:330px}
+ .professor-portrait img{transform:scale(1.38)}
+ .gym{grid-template-columns:minmax(165px,.68fr) minmax(0,1.32fr)}
+ .gym-portrait,.gym-portrait img{min-height:360px}
+ .gym-portrait img{transform:scale(1.42)}
+}
+@media(max-width:700px){
+ .professor-card{grid-template-columns:122px minmax(0,1fr)}
+ .professor-portrait,.professor-portrait img{min-height:300px}
+ .professor-portrait img{transform:scale(1.34)}
+ .gym{grid-template-columns:132px minmax(0,1fr)}
+ .gym-portrait,.gym-portrait img{min-height:330px}
+ .gym-portrait img{transform:scale(1.38)}
+ .gym-badge-slot{flex-basis:72px;width:72px;min-height:76px}
+ .gym-badge-art{width:56px;height:56px}
+}
+@media(max-width:420px){
+ .professor-card{grid-template-columns:104px minmax(0,1fr)}
+ .professor-portrait,.professor-portrait img{min-height:270px}
+ .professor-portrait img{transform:scale(1.28)}
+ .gym{grid-template-columns:112px minmax(0,1fr)}
+ .gym-portrait,.gym-portrait img{min-height:300px}
+ .gym-portrait img{transform:scale(1.32)}
+}
+
 </style>
 </head>
 <body>
