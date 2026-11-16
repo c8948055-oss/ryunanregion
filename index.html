@@ -298,6 +298,42 @@ img:not(#lbImg):focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 @media(max-width:700px){.gym-badge-art{width:66px!important;height:66px!important;flex-basis:66px!important}}
 @media(max-width:420px){.gym-badge-art{width:56px!important;height:56px!important;flex-basis:56px!important}}
 
+
+/* Final: every professor portrait uses exactly the same panel and image size as Haruna */
+#professors .professor-card:nth-child(n){grid-template-columns:190px minmax(0,1fr)!important;align-items:stretch!important}
+#professors .professor-card:nth-child(n) .professor-portrait{
+  display:flex!important;align-items:flex-end!important;justify-content:center!important;
+  height:auto!important;min-height:360px!important;padding:0!important;overflow:hidden!important;background:#fff!important
+}
+#professors .professor-card:nth-child(n) .professor-portrait img{
+  display:block!important;width:100%!important;height:360px!important;min-height:360px!important;max-height:360px!important;
+  object-fit:contain!important;object-position:center bottom!important;transform:none!important;margin:0!important
+}
+@media(max-width:900px){
+ #professors .professor-card:nth-child(n){grid-template-columns:170px minmax(0,1fr)!important}
+ #professors .professor-card:nth-child(n) .professor-portrait{min-height:340px!important}
+ #professors .professor-card:nth-child(n) .professor-portrait img{height:340px!important;min-height:340px!important;max-height:340px!important}
+}
+@media(max-width:700px){
+ #professors .professor-card:nth-child(n){grid-template-columns:145px minmax(0,1fr)!important}
+ #professors .professor-card:nth-child(n) .professor-portrait{min-height:320px!important}
+ #professors .professor-card:nth-child(n) .professor-portrait img{height:320px!important;min-height:320px!important;max-height:320px!important}
+}
+@media(max-width:420px){
+ #professors .professor-card:nth-child(n){grid-template-columns:112px minmax(0,1fr)!important}
+ #professors .professor-card:nth-child(n) .professor-portrait{min-height:285px!important}
+ #professors .professor-card:nth-child(n) .professor-portrait img{height:285px!important;min-height:285px!important;max-height:285px!important}
+}
+/* Badge sprite exists at repository root as badge-sprite.webp, not inside /assets */
+.gym-badge-art{
+ display:block!important;width:88px!important;height:88px!important;flex:0 0 88px!important;
+ background-image:url('/ryunanregion/badge-sprite.webp?v=5')!important;
+ background-repeat:no-repeat!important;background-size:400% 200%!important;
+ background-position:0 0!important;background-color:transparent!important;image-rendering:auto!important
+}
+@media(max-width:700px){.gym-badge-art{width:66px!important;height:66px!important;flex-basis:66px!important}}
+@media(max-width:420px){.gym-badge-art{width:56px!important;height:56px!important;flex-basis:56px!important}}
+
 </style>
 </head>
 <body>
@@ -370,7 +406,7 @@ const elite=[['Kazanami Touma','Lửa','Anh trai của Chủ hội quán Kazanam
 const $=id=>document.getElementById(id);
 $('locations').innerHTML=locations.map(([n,t,d])=>`<article class="loc"><div class="type">${t}</div><h3>${n}</h3><p>${d}</p>${n==='Siêu đô thị Seika'?``:''}</article>`).join('');
 $('routes').innerHTML=routes.map(([title,items],i)=>`<details class="route-group" ${i===0?'open':''}><summary>${title} · ${items.length} tuyến</summary><div class="routes">${items.map(([n,d])=>`<div class="route"><b>${n>=23?'BIỂN '+n:'TUYẾN '+String(n).padStart(2,'0')}</b>　${d}</div>`).join('')}</div></details>`).join('');
-$('professors').innerHTML=professors.map((p,i)=>`<article class="professor-card"><div class="professor-portrait"><img src="${A+p.image}" alt="Giáo sư ${p.name}" loading="lazy" data-lightbox="Giáo sư ${p.name}"></div><div class="professor-card-body"><div class="professor-index">GIÁO SƯ RYUNAN · 0${i+1}</div><h3>Giáo sư ${p.name}</h3><div class="professor-work"><b>Nơi làm việc:</b> ${p.work}</div><p><b>Lĩnh vực nghiên cứu:</b> ${p.field}</p><p><b>Tính cách:</b> ${p.personality}</p><div class="professor-partners"><strong>Pokémon đồng hành</strong>${p.pokemon.map(x=>'<button class="pokemon-link" data-pokemon="'+x[0]+'" data-pokemon-id="'+x[1]+'" data-pokemon-form="'+(x[2]||'')+'"><img class="pokemon-mini" loading="lazy" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(x[2]==='shiny'?'shiny/':'')+x[1]+'.png" alt=""><span>'+x[0]+'</span></button>').join('')}</div></div></article>`).join('');$('gyms').innerHTML=gyms.map((g,i)=>`<article class="gym"><div class="gym-portrait"><img src="${A+g[6]}" alt="Chủ hội quán ${g[0]}" loading="lazy" data-lightbox="Chủ hội quán ${g[0]}"></div><div class="gym-info"><div class="gym-heading"><div class="gym-heading-copy"><div class="gym-meta">HỘI QUÁN 0${i+1} · HỆ ${g[1].toUpperCase()}</div><h3>${g[0]}</h3><div class="badge">${g[2]}</div></div><div class="gym-badge-slot" title="${g[2]}"><div class="gym-badge-art" role="img" aria-label="${g[2]}" style="background-position:${[[100,100],[33.333,0],[33.333,100],[0,100],[100,0],[66.667,0],[66.667,100],[0,0]][i][0]}% ${[[100,100],[33.333,0],[33.333,100],[0,100],[100,0],[66.667,0],[66.667,100],[0,0]][i][1]}%"></div><small>HUY HIỆU</small></div></div><p><b>${g[3]}</b></p><p>${g[4]}</p><p><b>Thể thức:</b> ${g[5]}</p><img class="gym-photo" src="${A+g[7]}" alt="${g[3]}" loading="lazy" data-lightbox="${g[3]}"></div></article>`).join('');
+$('professors').innerHTML=professors.map((p,i)=>`<article class="professor-card"><div class="professor-portrait"><img src="${A+p.image}" alt="Giáo sư ${p.name}" loading="lazy" data-lightbox="Giáo sư ${p.name}"></div><div class="professor-card-body"><div class="professor-index">GIÁO SƯ RYUNAN · 0${i+1}</div><h3>Giáo sư ${p.name}</h3><div class="professor-work"><b>Nơi làm việc:</b> ${p.work}</div><p><b>Lĩnh vực nghiên cứu:</b> ${p.field}</p><p><b>Tính cách:</b> ${p.personality}</p><div class="professor-partners"><strong>Pokémon đồng hành</strong>${p.pokemon.map(x=>'<button class="pokemon-link" data-pokemon="'+x[0]+'" data-pokemon-id="'+x[1]+'" data-pokemon-form="'+(x[2]||'')+'"><img class="pokemon-mini" loading="lazy" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(x[2]==='shiny'?'shiny/':'')+x[1]+'.png" alt=""><span>'+x[0]+'</span></button>').join('')}</div></div></article>`).join('');$('gyms').innerHTML=gyms.map((g,i)=>`<article class="gym"><div class="gym-portrait"><img src="${A+g[6]}" alt="Chủ hội quán ${g[0]}" loading="lazy" data-lightbox="Chủ hội quán ${g[0]}"></div><div class="gym-info"><div class="gym-heading"><div class="gym-heading-copy"><div class="gym-meta">HỘI QUÁN 0${i+1} · HỆ ${g[1].toUpperCase()}</div><h3>${g[0]}</h3><div class="badge">${g[2]}</div></div><div class="gym-badge-slot" title="${g[2]}"><div class="gym-badge-art" role="img" aria-label="${g[2]}" style="background-position:${[[0,0],[33.333,0],[66.667,0],[100,0],[0,100],[33.333,100],[66.667,100],[100,100]][i][0]}% ${[[0,0],[33.333,0],[66.667,0],[100,0],[0,100],[33.333,100],[66.667,100],[100,100]][i][1]}%"></div><small>HUY HIỆU</small></div></div><p><b>${g[3]}</b></p><p>${g[4]}</p><p><b>Thể thức:</b> ${g[5]}</p><img class="gym-photo" src="${A+g[7]}" alt="${g[3]}" loading="lazy" data-lightbox="${g[3]}"></div></article>`).join('');
 $('elite').innerHTML=elite.map((e,i)=>`<article class="profile"><div class="portrait"><img src="${A+e[3]}" alt="${e[0]}" loading="lazy" data-lightbox="${e[0]}"></div><div class="profile-body"><div class="small-label">Tứ Đại Thiên Vương · 0${i+1}</div><h3>${e[0]}</h3><p><b>Chuyên môn: Hệ ${e[1]}</b></p><p>${e[2]}</p><p><b>Pokémon chủ lực:</b> <button class="pokemon-link" data-pokemon="${e[4]}" data-pokemon-id="${e[5]}">${e[4]}</button> (có thể Mega Evolution)</p><p class="muted-note">Có thể sử dụng Tuyệt kỹ Z.</p></div></article>`).join('');
 // Pokémon image popup
 const pv=$('pokemonViewer');document.addEventListener('click',e=>{const b=e.target.closest('.pokemon-link');if(!b)return;const id=b.dataset.pokemonId;const suffix=b.dataset.pokemonForm==='shiny'?'shiny/':'';$('pokemonViewerImage').src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+suffix+id+'.png';$('pokemonViewerImage').onerror=()=>{$('pokemonViewerImage').src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+suffix+id+'.png'};$('pokemonViewerName').textContent=b.dataset.pokemon;pv.classList.add('open');pv.setAttribute('aria-hidden','false')});$('pokemonViewerClose').onclick=()=>{pv.classList.remove('open');pv.setAttribute('aria-hidden','true')};pv.onclick=e=>{if(e.target===pv){pv.classList.remove('open');pv.setAttribute('aria-hidden','true')}};
