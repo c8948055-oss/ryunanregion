@@ -203,6 +203,46 @@ img:not(#lbImg):focus-visible{outline:3px solid var(--gold);outline-offset:3px}
  .gym-badge-art{width:56px;height:56px}
 }
 
+
+/* Final portrait sizing: all eight professors use the full card height, retain the source ratio, and never crop */
+#professors .professor-card{
+  grid-template-columns:190px minmax(0,1fr)!important;
+  min-height:330px!important;
+}
+#professors .professor-portrait{
+  min-height:330px!important;height:100%!important;padding:0!important;
+  display:flex!important;align-items:flex-end!important;justify-content:center!important;
+  overflow:hidden!important;
+}
+#professors .professor-portrait img{
+  display:block!important;width:100%!important;height:100%!important;min-height:330px!important;
+  max-height:none!important;object-fit:contain!important;object-position:center bottom!important;
+  transform:none!important;margin:0!important;
+}
+/* Load the badge sheet from the repository root and map all eight gym badges in league order */
+.gym-badge-art{
+  display:block!important;width:76px!important;height:76px!important;flex:0 0 76px!important;
+  background-image:url('https://c8948055-oss.github.io/ryunanregion/badge-sprite.webp?v=4')!important;
+  background-repeat:no-repeat!important;background-size:400% 200%!important;
+  background-color:transparent!important;
+}
+@media(max-width:900px){
+  #professors .professor-card{grid-template-columns:170px minmax(0,1fr)!important;min-height:310px!important}
+  #professors .professor-portrait{min-height:310px!important}
+  #professors .professor-portrait img{min-height:310px!important}
+}
+@media(max-width:700px){
+  #professors .professor-card{grid-template-columns:145px minmax(0,1fr)!important;min-height:280px!important}
+  #professors .professor-portrait{min-height:280px!important}
+  #professors .professor-portrait img{min-height:280px!important}
+  .gym-badge-art{width:64px!important;height:64px!important;flex-basis:64px!important}
+}
+@media(max-width:420px){
+  #professors .professor-card{grid-template-columns:120px minmax(0,1fr)!important;min-height:260px!important}
+  #professors .professor-portrait{min-height:260px!important}
+  #professors .professor-portrait img{min-height:260px!important}
+}
+
 </style>
 </head>
 <body>
