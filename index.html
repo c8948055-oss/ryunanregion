@@ -142,6 +142,23 @@ img:not(#lbImg):focus-visible{outline:3px solid var(--gold);outline-offset:3px}
  .gym-portrait img{transform:scale(1.32)}
 }
 
+
+/* Updated original Ryunan gym badge art + tighter character portrait framing */
+.gym-badge-art{background-image:url('https://c8948055-oss.github.io/ryunanregion/assets/ryunan-badges.webp')!important;background-size:400% 200%!important;width:72px;height:72px;image-rendering:auto}
+.professor-portrait{overflow:hidden;align-items:stretch;padding:0}
+.professor-portrait img{height:calc(100% + 44px)!important;min-height:0!important;margin-top:-44px;width:100%;object-fit:contain;object-position:center bottom;transform:scale(1.16)!important;transform-origin:center bottom}
+.gym-portrait{display:block!important;overflow:hidden;padding:0}
+.gym-portrait img{height:calc(100% + 72px)!important;min-height:0!important;margin-top:-72px;width:100%;object-fit:contain;object-position:center bottom;transform:scale(1.18)!important;transform-origin:center bottom}
+@media(max-width:900px){
+ .professor-portrait img{height:calc(100% + 38px)!important;margin-top:-38px;transform:scale(1.12)!important}
+ .gym-portrait img{height:calc(100% + 60px)!important;margin-top:-60px;transform:scale(1.14)!important}
+}
+@media(max-width:700px){
+ .gym-badge-art{width:56px;height:56px}
+ .professor-portrait img{height:calc(100% + 32px)!important;margin-top:-32px;transform:scale(1.10)!important}
+ .gym-portrait img{height:calc(100% + 48px)!important;margin-top:-48px;transform:scale(1.10)!important}
+}
+
 </style>
 </head>
 <body>
