@@ -80,6 +80,14 @@ h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.13;letter-spacing:-.
  .gym-info h3{font-size:15px}
 }
 
+
+/* Universal image lightbox affordance */
+img:not(#lbImg){cursor:zoom-in}
+img:not(#lbImg):focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+#lightbox{cursor:zoom-out}
+#lightbox #lbImg{cursor:zoom-in;max-width:94vw;max-height:82vh}
+#lightbox .lb-caption{pointer-events:none}
+
 </style>
 </head>
 <body>
@@ -160,6 +168,18 @@ const pv=$('pokemonViewer');document.addEventListener('click',e=>{const b=e.targ
 // navigation
 $('menuBtn').onclick=()=>$('navLinks').classList.toggle('open');document.querySelectorAll('#navLinks a').forEach(a=>a.onclick=()=>$('navLinks').classList.remove('open'));
 window.addEventListener('scroll',()=>$('toTop').classList.toggle('show',window.scrollY>500));$('toTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+// Make every content image available in the shared gallery (including cards created above).
+document.querySelectorAll('img:not(#lbImg)').forEach((img,i)=>{
+ if(!img.dataset.lightbox) img.dataset.lightbox=img.alt||('Hình ảnh '+(i+1));
+ img.loading=img.loading||'lazy';
+ img.tabIndex=0;
+ img.setAttribute('role','button');
+ img.setAttribute('aria-label','Phóng to: '+img.dataset.lightbox);
+});
+document.addEventListener('keydown',e=>{
+ const img=e.target.closest('img[role="button"]');
+ if(img&&(e.key==='Enter'||e.key===' ')){e.preventDefault();img.click()}
+});
 // lightweight image viewer
 let gallery=[],idx=0,zoom=1;const lb=$('lightbox');function show(){const it=gallery[idx];$('lbImg').src=it.src;$('lbImg').alt=it.caption;$('lbCaption').textContent=it.caption;zoom=1;$('lbImg').style.transform='scale(1)';lb.classList.add('open')}function openImage(img){const all=[...document.querySelectorAll('[data-lightbox]')];gallery=all.map(el=>({src:el.src,caption:el.dataset.lightbox||el.alt}));idx=Math.max(0,all.indexOf(img));show()}document.addEventListener('click',e=>{const img=e.target.closest('[data-lightbox]');if(img)openImage(img)});function step(n){if(!gallery.length)return;idx=(idx+n+gallery.length)%gallery.length;show()}$('lbClose').onclick=()=>lb.classList.remove('open');$('lbPrev').onclick=()=>step(-1);$('lbNext').onclick=()=>step(1);$('zoomIn').onclick=()=>{zoom=Math.min(4,zoom+.25);$('lbImg').style.transform=`scale(${zoom})`};$('zoomOut').onclick=()=>{zoom=Math.max(1,zoom-.25);$('lbImg').style.transform=`scale(${zoom})`};$('zoomReset').onclick=()=>{zoom=1;$('lbImg').style.transform='scale(1)'};lb.onclick=e=>{if(e.target===lb)lb.classList.remove('open')};document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1);if(e.key==='+')$('zoomIn').click();if(e.key==='-')$('zoomOut').click()});
 </script>
