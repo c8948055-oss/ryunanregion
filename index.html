@@ -13,6 +13,153 @@
 @media(max-width:700px){.wrap{width:min(100% - 28px,560px)}.nav-in{height:60px;justify-content:space-between}.menu{display:block}.links{display:none;position:absolute;left:0;right:0;top:60px;background:#f8fbfc;border-bottom:1px solid var(--line);padding:12px 18px 16px;grid-template-columns:repeat(3,1fr);gap:12px}.links.open{display:grid}.links a{font-size:12px;padding:5px}.hero{padding:42px 0}.hero-grid{grid-template-columns:1fr;gap:22px}.hero-image{transform:none}.hero-image img{aspect-ratio:16/10}.lead{font-size:15px}.stats{gap:18px}.stats strong{font-size:21px}.section{padding:54px 0}.maps,.route-groups,.rules,.champion{grid-template-columns:1fr}.three{grid-template-columns:1fr}.location-grid{grid-template-columns:1fr 1fr;gap:9px}.loc{padding:13px}.loc h3{font-size:17px}.loc p{font-size:11px}.profiles{grid-template-columns:repeat(2,1fr);gap:10px}.portrait{height:235px}.profile-body{padding:12px}.profile-body h3{font-size:16px}.paired img{height:95px}.gym-grid{grid-template-columns:1fr}.gym{grid-template-columns:120px 1fr}.gym-portrait{min-height:245px}.gym-info{padding:13px}.gym-info h3{font-size:18px}.gym-info p{font-size:11px}.elite{grid-template-columns:repeat(2,1fr);gap:10px}.elite .profile .portrait{height:245px}.champion{padding:18px}.team{grid-template-columns:repeat(2,1fr)}.activities{grid-template-columns:1fr 1fr}.activity{padding:14px}.activity h3{font-size:17px}.activity p{font-size:11px}.lb-prev{left:7px}.lb-next{right:7px}.lb-prev,.lb-next{padding:8px}.lb-zoom{bottom:12px}.lb-caption{bottom:58px}}
 @media(max-width:390px){.location-grid{grid-template-columns:1fr}.profiles,.elite{grid-template-columns:1fr 1fr}.portrait{height:205px}.gym{grid-template-columns:100px 1fr}.gym-portrait{min-height:225px}.activities{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+/* === Ryunan visual system refresh === */
+:root{
+ --ink:#183047;--muted:#617486;--blue:#246b91;--teal:#3b8983;
+ --green:#557b63;--gold:#b68a4d;--paper:#f4f7f6;--white:#fff;
+ --line:#e0e8e6;--soft:#edf3f1;--shadow:0 10px 28px rgba(24,48,71,.07);
+ --shadow-hover:0 18px 38px rgba(24,48,71,.12)
+}
+html{scroll-padding-top:82px}
+body{background:var(--paper);color:var(--ink);font-size:15px;line-height:1.7}
+.wrap{width:min(1160px,calc(100% - 48px))}
+h1,h2,h3{letter-spacing:-.025em}
+h1{font-size:clamp(38px,5.2vw,64px);line-height:1.08}
+h2{font-size:clamp(28px,3.5vw,40px)}
+h3{font-size:20px}
+p{line-height:1.7}
+.section{padding:68px 0;border-top:1px solid rgba(214,226,223,.8)}
+.section-head{max-width:720px;margin-bottom:28px}
+.eyebrow{letter-spacing:.14em;color:var(--teal);font-size:10px}
+.nav{background:rgba(250,252,251,.94);box-shadow:0 3px 16px rgba(24,48,71,.035)}
+.nav-in{height:72px;gap:28px}
+.brand{font-size:13px;letter-spacing:.08em}
+.brand small{font-size:9px;color:var(--teal);margin-top:2px}
+.links{gap:clamp(10px,1.5vw,19px)}
+.links a{font-size:11px;color:#526879;transition:color .18s}
+.links a:hover{color:var(--teal)}
+.hero{padding:66px 0 60px;background:linear-gradient(120deg,#e8f0ed 0%,#f8faf8 54%,#e7f0f3 100%)}
+.hero-grid{gap:clamp(28px,5vw,64px)}
+.hero .eyebrow{color:#397d79}
+.hero .lead{font-size:16px;line-height:1.8;color:#5d7180}
+.hero-image{border:1px solid rgba(255,255,255,.9);border-radius:18px;padding:8px;overflow:hidden;transform:none;box-shadow:0 18px 45px rgba(24,48,71,.11)}
+.hero-image img{border-radius:11px;aspect-ratio:16/10;object-fit:cover}
+.actions{gap:12px;margin:24px 0}
+.btn{border-radius:999px;padding:11px 19px;font-size:12px;transition:all .2s}
+.btn.primary{background:var(--ink);border-color:var(--ink)}
+.btn.secondary{background:rgba(255,255,255,.78);border-color:#cbd9d8}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.stats{gap:clamp(16px,2.5vw,30px);margin-top:28px}
+.stats strong{font-size:25px;color:var(--ink)}
+.stats span{font-size:9px;letter-spacing:.09em}
+.maps{gap:20px}
+.map-card,.info,.loc,.route-group,.profile,.gym,.activity,.rule{
+ border:1px solid var(--line);border-radius:14px;box-shadow:0 4px 16px rgba(24,48,71,.035)
+}
+.map-card{padding:12px;transition:transform .2s,box-shadow .2s}
+.map-card:hover,.loc:hover,.info:hover,.activity:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.map-card img{border-radius:9px;background:#eef4f2}
+.map-card h3{font-size:18px;margin:13px 5px 3px}
+.map-card p{margin:0 5px 4px}
+.three{gap:16px;margin-top:22px}
+.info{padding:21px;background:#fff;transition:transform .2s,box-shadow .2s}
+.info .ico{font-size:22px}
+.info h3{font-size:18px}
+.info p{font-size:13px;margin-bottom:0}
+.location-grid{gap:15px}
+.loc{padding:18px;background:#fff;transition:transform .2s,box-shadow .2s}
+.loc .type{font-size:9px;letter-spacing:.13em;color:var(--teal)}
+.loc h3{font-size:17px;margin:8px 0 6px}
+.loc p{font-size:12px;line-height:1.65}
+.route-groups{gap:16px}
+.route-group{background:#fff;overflow:hidden}
+.route-group summary{padding:17px 20px;font-size:13px;color:var(--ink)}
+.routes{padding:0 20px 18px}
+.route{font-size:12px;line-height:1.6;padding-top:10px}
+.route b{font-size:10px;color:var(--teal)}
+.profiles{gap:17px}
+.profile{border-radius:14px;background:#fff;transition:transform .2s,box-shadow .2s}
+.profile:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.portrait{height:290px;background:linear-gradient(145deg,#edf3f1,#f7f9f8)}
+.profile-body{padding:17px}
+.profile-body h3{font-size:18px;line-height:1.3;margin:5px 0 8px}
+.profile-body p{font-size:12px;line-height:1.65}
+.small-label{font-size:9px;letter-spacing:.13em;color:var(--teal)}
+.paired{margin-top:14px;padding-top:13px}
+.paired img{height:135px;object-fit:contain;border-radius:8px;background:#f1f5f3}
+.paired small{font-size:10px}
+.pokemon-list{line-height:2}
+.pokemon-link{background:#edf4f2;color:#285f68;border:1px solid #dce9e5;border-radius:999px;padding:4px 10px;margin:3px 2px;font-size:11px;transition:all .18s}
+.pokemon-link:hover{background:#dcebe6;border-color:#bfd7ce;text-decoration:none}
+.gym-grid{gap:17px}
+.gym{border-radius:14px;background:#fff;grid-template-columns:minmax(145px,.72fr) 1.28fr}
+.gym-portrait{background:#edf3f1}
+.gym-info{padding:19px}
+.gym-info h3{font-size:19px}
+.gym-info p{font-size:12px;line-height:1.65}
+.gym-photo{border-radius:8px}
+.gym-meta{font-size:9px;letter-spacing:.1em;color:var(--teal)}
+.badge{border-radius:999px;background:#f7f1e7;border-color:#eadfc9;color:#866333;padding:4px 10px}
+.elite{gap:17px}
+.elite .profile .portrait{height:310px}
+.champion{border-radius:16px;background:linear-gradient(125deg,#e9f1ec,#f4f7f3);border-color:#dce7df;padding:28px;gap:30px}
+.champion-art{border-radius:12px;overflow:hidden;border-color:#e4ebe6;min-height:300px}
+.team span{border-radius:9px;padding:8px;background:#fff}
+.activities{gap:16px}
+.activity{padding:20px;background:#fff;transition:transform .2s,box-shadow .2s}
+.activity h3{font-size:18px}
+.activity p{font-size:12px;margin-bottom:0}
+.rules{gap:16px}
+.rule{padding:20px;background:#fff}
+.rule h3{font-size:18px}
+.rule p,.rule li{font-size:12px;line-height:1.7}
+.footer{background:#172f42;padding:40px 0}
+.footer h3{font-size:21px}
+.footer .eyebrow{color:#9fcac2}
+.to-top{border-radius:12px;background:#21445b;box-shadow:var(--shadow-hover)}
+.lightbox,.pokemon-viewer{backdrop-filter:blur(7px)}
+.pokemon-viewer-card{border-radius:18px;padding:28px;box-shadow:0 24px 70px rgba(0,0,0,.24)}
+.pokemon-viewer-card img{height:270px}
+.pokemon-viewer-close{border-radius:50%;width:34px;height:34px}
+@media(max-width:980px){
+ .nav-in{gap:15px}.links{gap:10px}
+ .location-grid{grid-template-columns:repeat(2,1fr)}
+ .profiles,.elite{gap:13px}
+}
+@media(max-width:700px){
+ .wrap{width:calc(100% - 30px)}
+ .nav-in{height:62px}
+ .links{top:62px;background:#fbfcfb;border-radius:0 0 14px 14px;box-shadow:0 12px 24px rgba(24,48,71,.08)}
+ .hero{padding:42px 0 38px}
+ .hero-grid{gap:24px}
+ .hero-image{padding:6px;border-radius:13px}
+ .hero-image img{border-radius:8px}
+ .section{padding:50px 0}
+ .section-head{margin-bottom:22px}
+ .location-grid{gap:10px}
+ .loc{padding:13px;border-radius:11px}
+ .loc h3{font-size:15px}
+ .loc p{font-size:11px}
+ .portrait{height:230px}
+ .profile-body{padding:13px}
+ .profile-body h3{font-size:15px}
+ .paired img{height:100px}
+ .gym{border-radius:12px;grid-template-columns:115px 1fr}
+ .gym-info{padding:13px}
+ .gym-info h3{font-size:16px}
+ .champion{padding:16px;gap:18px}
+ .elite .profile .portrait{height:235px}
+ .activity,.rule{padding:15px}
+}
+@media(max-width:390px){
+ .wrap{width:calc(100% - 24px)}
+ .location-grid{grid-template-columns:1fr}
+ .profiles,.elite{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .portrait{height:205px}
+ .gym{grid-template-columns:100px 1fr}
+}
+
 </style>
 </head>
 <body>
