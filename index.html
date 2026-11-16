@@ -159,6 +159,25 @@ img:not(#lbImg):focus-visible{outline:3px solid var(--gold);outline-offset:3px}
  .gym-portrait img{height:calc(100% + 48px)!important;margin-top:-48px;transform:scale(1.10)!important}
 }
 
+
+/* Final portrait crop: remove transparent headroom without squeezing characters */
+#professors .professor-card:first-child .professor-portrait img{
+ height:calc(100% + 54px)!important;min-height:0!important;margin-top:-54px!important;
+ object-fit:cover!important;object-position:center top!important;transform:none!important
+}
+.gym-portrait img{
+ height:calc(100% + 68px)!important;min-height:0!important;margin-top:-68px!important;
+ object-fit:cover!important;object-position:center top!important;transform:none!important
+}
+@media(max-width:900px){
+ #professors .professor-card:first-child .professor-portrait img{height:calc(100% + 42px)!important;margin-top:-42px!important}
+ .gym-portrait img{height:calc(100% + 54px)!important;margin-top:-54px!important}
+}
+@media(max-width:700px){
+ #professors .professor-card:first-child .professor-portrait img{height:calc(100% + 32px)!important;margin-top:-32px!important}
+ .gym-portrait img{height:calc(100% + 42px)!important;margin-top:-42px!important}
+}
+
 </style>
 </head>
 <body>
