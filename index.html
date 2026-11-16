@@ -150,27 +150,27 @@ img:not(#lbImg):focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 
 
 /* FINAL FIX: fill portrait panels vertically without cutting heads or feet */
-#professors .professor-card{grid-template-columns:190px minmax(0,1fr)!important}
-#professors .professor-portrait{padding:0!important;background:#fff!important;overflow:hidden;display:flex;align-items:stretch;justify-content:center}
-#professors .professor-portrait img{display:block;width:100%!important;height:100%!important;min-height:0!important;object-fit:cover!important;object-position:center center!important;transform:none!important;margin:0!important}
+#professors .professor-card:nth-child(-n+2){grid-template-columns:190px minmax(0,1fr)!important}
+#professors .professor-card:nth-child(-n+2) .professor-portrait{padding:0!important;background:#fff!important;overflow:hidden;display:flex;align-items:stretch;justify-content:center}
+#professors .professor-card:nth-child(-n+2) .professor-portrait img{display:block;width:100%!important;height:100%!important;min-height:0!important;object-fit:cover!important;object-position:center center!important;transform:none!important;margin:0!important}
 .gym{grid-template-columns:minmax(225px,.82fr) minmax(0,1.18fr)!important}
 .gym-portrait{min-height:520px!important;background:#fff!important;overflow:hidden;display:flex;align-items:stretch;justify-content:center;padding:0}
 .gym-portrait img{display:block;width:100%!important;height:100%!important;min-height:0!important;max-height:none!important;object-fit:cover!important;object-position:center center!important;transform:none!important;margin:0!important}
 /* Use the published root sprite; correct the 4x2 tile mapping in the card markup */
 .gym-badge-art{display:block!important;width:88px;height:88px;margin:0 auto 3px;background-image:url('badge-sprite.webp')!important;background-repeat:no-repeat!important;background-size:400% 200%!important;background-color:transparent!important;image-rendering:auto}
 @media(max-width:900px){
- #professors .professor-card{grid-template-columns:170px minmax(0,1fr)!important}
+ #professors .professor-card:nth-child(-n+2){grid-template-columns:170px minmax(0,1fr)!important}
  .gym{grid-template-columns:minmax(190px,.78fr) minmax(0,1.22fr)!important}
  .gym-portrait{min-height:450px!important}
 }
 @media(max-width:700px){
- #professors .professor-card{grid-template-columns:135px minmax(0,1fr)!important}
+ #professors .professor-card:nth-child(-n+2){grid-template-columns:135px minmax(0,1fr)!important}
  .gym{grid-template-columns:145px minmax(0,1fr)!important}
  .gym-portrait{min-height:390px!important}
  .gym-badge-art{width:66px;height:66px}
 }
 @media(max-width:420px){
- #professors .professor-card{grid-template-columns:112px minmax(0,1fr)!important}
+ #professors .professor-card:nth-child(-n+2){grid-template-columns:112px minmax(0,1fr)!important}
  .gym{grid-template-columns:112px minmax(0,1fr)!important}
  .gym-portrait{min-height:330px!important}
  .gym-badge-art{width:56px;height:56px}
@@ -178,26 +178,26 @@ img:not(#lbImg):focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 
 
 /* FINAL PORTRAIT + BADGE FIX */
-#professors .professor-card{grid-template-columns:190px minmax(0,1fr)!important}
-#professors .professor-portrait{padding:0!important;background:#fff!important;overflow:hidden;display:flex;align-items:stretch;justify-content:center}
-#professors .professor-portrait img{display:block;width:100%!important;height:100%!important;min-height:0!important;object-fit:cover!important;object-position:center center!important;transform:none!important;margin:0!important}
+#professors .professor-card:nth-child(-n+2){grid-template-columns:190px minmax(0,1fr)!important}
+#professors .professor-card:nth-child(-n+2) .professor-portrait{padding:0!important;background:#fff!important;overflow:hidden;display:flex;align-items:stretch;justify-content:center}
+#professors .professor-card:nth-child(-n+2) .professor-portrait img{display:block;width:100%!important;height:100%!important;min-height:0!important;object-fit:cover!important;object-position:center center!important;transform:none!important;margin:0!important}
 .gym{grid-template-columns:minmax(225px,.82fr) minmax(0,1.18fr)!important}
 .gym-portrait{min-height:520px!important;background:#fff!important;overflow:hidden;display:flex;align-items:stretch;justify-content:center;padding:0}
 .gym-portrait img{display:block;width:100%!important;height:100%!important;min-height:0!important;max-height:none!important;object-fit:cover!important;object-position:center center!important;transform:none!important;margin:0!important}
 .gym-badge-art{display:block!important;width:88px;height:88px;margin:0 auto 3px;background-image:url('badge-sprite.webp')!important;background-repeat:no-repeat!important;background-size:400% 200%!important;background-color:transparent!important;image-rendering:auto}
 @media(max-width:900px){
- #professors .professor-card{grid-template-columns:170px minmax(0,1fr)!important}
+ #professors .professor-card:nth-child(-n+2){grid-template-columns:170px minmax(0,1fr)!important}
  .gym{grid-template-columns:minmax(190px,.78fr) minmax(0,1.22fr)!important}
  .gym-portrait{min-height:450px!important}
 }
 @media(max-width:700px){
- #professors .professor-card{grid-template-columns:135px minmax(0,1fr)!important}
+ #professors .professor-card:nth-child(-n+2){grid-template-columns:135px minmax(0,1fr)!important}
  .gym{grid-template-columns:145px minmax(0,1fr)!important}
  .gym-portrait{min-height:390px!important}
  .gym-badge-art{width:66px;height:66px}
 }
 @media(max-width:420px){
- #professors .professor-card{grid-template-columns:112px minmax(0,1fr)!important}
+ #professors .professor-card:nth-child(-n+2){grid-template-columns:112px minmax(0,1fr)!important}
  .gym{grid-template-columns:112px minmax(0,1fr)!important}
  .gym-portrait{min-height:330px!important}
  .gym-badge-art{width:56px;height:56px}
