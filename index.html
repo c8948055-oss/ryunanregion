@@ -455,21 +455,12 @@ img:not(#lbImg):focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 </head>
 <body>
 <header class="nav"><div class="wrap nav-in"><a class="brand" href="#trang-chu">POKÉMON RYUNAN<small>REGIONAL GUIDE</small></a><button class="menu" id="menuBtn" aria-label="Mở danh mục">☰</button><nav class="links" id="navLinks"><a href="#trang-chu">Trang chủ</a><a href="#ban-do">Bản đồ</a><a href="#dia-danh">Địa danh</a><a href="#giao-su">Giáo sư</a><a href="#hoi-quan">Hội quán</a><a href="#thien-vuong">Thiên Vương</a><a href="#vo-dich">Vô Địch</a><a href="#lien-doan">Liên đoàn</a></nav></div></header>
-<aside class="music-player" aria-label="Trình phát nhạc Pokémon">
- <div class="music-player-top">
-  <div class="music-disc" aria-hidden="true">♫</div>
-  <div class="music-meta">
-   <div class="music-kicker">RYUNAN RADIO · SHUFFLE</div>
-   <div class="music-title" id="musicTitle">Đang chuẩn bị danh sách nhạc…</div>
-  </div>
-  <div class="music-controls">
-   <button id="musicPlay" type="button" aria-label="Tạm dừng hoặc phát nhạc">Ⅱ</button>
-   <button id="musicNext" type="button" aria-label="Bài tiếp theo">⏭</button>
-  </div>
- </div>
- <div class="music-note" id="musicStatus" aria-live="polite">Đang thử tự phát nhạc…</div>
- <audio id="siteAudio" preload="auto" autoplay></audio>
-</aside>
+<button class="music-ball" id="musicPlay" type="button" aria-label="Tạm dừng nhạc" title="Pokémon Radio">
+ <span class="music-ball-art" aria-hidden="true"></span>
+ <span class="sr-only" id="musicTitle">Pokémon Radio · phát ngẫu nhiên</span>
+</button>
+<span class="sr-only" id="musicStatus" aria-live="polite">Đang thử tự phát nhạc…</span>
+<audio id="siteAudio" preload="auto" autoplay></audio>
 
 <main>
 <section class="hero" id="trang-chu"><div class="wrap hero-grid"><div><div class="eyebrow">Pokémon Regional Encyclopedia · Việt Nam</div><h1>Chào mừng đến với <span style="color:var(--blue)">Ryunan</span></h1><p class="lead">Một vùng đất trải dài dọc bờ đại dương, nơi núi đá vôi, cao nguyên, rừng nguyên sinh, cố đô di sản và những quần đảo nhiệt đới cùng tạo nên một thế giới Pokémon đa dạng.</p><p></p><div class="actions"><a class="btn primary" href="#ban-do">Khám phá bản đồ</a><a class="btn secondary" href="#hoi-quan">Tìm hiểu 8 Hội quán</a></div><div class="stats"><div><strong>18</strong><span>Địa danh nổi bật</span></div><div><strong>8</strong><span>Giáo sư & viện nghiên cứu</span></div><div><strong>8</strong><span>Hội quán Pokémon</span></div></div></div><div class="hero-image"><img src="https://c8948055-oss.github.io/ryunanregion/region-map.webp" alt="Bản đồ vùng Ryunan" loading="eager"></div></div></section>
@@ -526,20 +517,20 @@ const professors=[
 { name:'Takahashi Akira',work:'Trạm Bảo tồn Hoàng gia Takahashi · Thị trấn rừng cổ Koorin',field:'Bảo tồn động vật hoang dã và phục hồi hệ sinh thái rừng nguyên sinh.',personality:'Chính trực, kiên định, quyết liệt bảo vệ rừng già và các loài Pokémon hoang dã trước nạn săn trộm trái phép.',image:'professor-takahashi.webp',pokemon:[['Dodaitose',389],['Mukuhawk',398]]}
 ];
 const gyms=[
-['Kazanami Ren','Điện','Huy hiệu Tia Chớp','Tháp Denkou · Thành phố Hiryu','Đấu trường năng lượng sạch kết hợp nhà máy thủy điện và tua-bin gió dọc sông chính. Cột thu lôi có thể chuyển hướng và khuếch đại dòng điện.','2 đấu 2 đơn · Cấm Mega Evolution, Z-Moves và Dynamax; bạn được đổi Pokémon tối đa một lần.','leader-ren.webp','gym1.webp'],
-['Morioka Shiori','Thường','Huy hiệu Hòa Điệu','Trang viên Mokkin · Thị trấn Koorin','Trang viên gỗ mái tranh với sân cỏ tự nhiên giúp khuếch đại nhịp di chuyển; nổi tiếng với bẫy tốc độ và biến hóa chiêu thức.','2 đấu 2 đơn · Cấm cơ chế đặc biệt; thử thách tập trung vào kiểm soát tốc độ và thích nghi địa hình.','leader-shiori.webp','gym2.webp'],
-['Umihara Taiga','Nước','Huy hiệu Hải Triều','Đấu trường Minato · Thành phố cảng Koho','Sân đấu ngoài trời trên boong tàu huấn luyện neo trong vịnh đá vôi, có điều chỉnh mực nước và bục nổi mô phỏng thủy triều.','3 đấu 3 đơn · Mỗi bên tối đa một cơ chế đặc biệt nếu bạn có trang bị hợp lệ.','leader-taiga.webp','gym3.webp'],
-['Iwamoto Goro','Giác Đấu','Huy hiệu Bàn Thạch','Võ đường Banjaku · Thị trấn Unrei','Võ đường đá cổ khắc chữ trên Vách núi Banjaku, cạnh Khu luyện võ Sekigan. Sân granite chịu được chấn động cận chiến mạnh.','3 đấu 3 đơn · Tối đa một cơ chế đặc biệt; cấm câu giờ thụ động bằng cách rời khỏi sân.','leader-goro.webp','gym4.webp'],
-['Kagura Ayame','Ma','Huy hiệu U Linh','Đền thờ Yuurei · Cố đô Reito','Đền cổ phủ rêu sau cổng torii trên đường đến Hồ Oboro và Rừng trúc Getsuei. Thánh điện phủ sương tím, thắp sáng bằng đèn lân tinh.','3 đấu 3 đơn · Tối đa một Mega Evolution hoặc Z-Move; không có Power Spot cho Dynamax.','leader-ayame.webp','gym5.webp'],
-['Shiranui Kaito','Tiên','Huy hiệu San Hô','Nhà hát Sango · Thành phố biển Hakuhama','Nhà hát mái vòm kính cạnh vịnh san hô. Kaito đồng thời là ngôi sao Contest, nổi tiếng với các màn tấn công rực rỡ.','Đấu đôi 2 đấu 2, có một Pokémon dự bị mỗi bên; tổng cộng phải đánh bại ba Pokémon đối phương. Tối đa một cơ chế đặc biệt.','leader-kaito.webp','gym6.webp'],
-['Amamiya Sora','Cỏ','Huy hiệu Tinh Tú','Vườn Seisou · Thị trấn Seikoo','Khu bảo tồn thực vật phát quang và đài quan sát ngoài trời cạnh thung lũng Hoshikusa. Sân phủ rêu, hoa phát sáng theo chòm sao.','3 đấu 3 đơn · Tối đa một cơ chế đặc biệt; phấn hoa phát quang hoạt động theo nhịp vào ban đêm.','leader-sora.webp','gym7.webp'],
-['Tetsuzaki Hayate','Thép','Huy hiệu Cơ Khí','Pháo đài Kikou · Thành phố Seika','Đấu trường công nghệ cao vận hành bằng bánh răng hợp kim và lá chắn từ trường, liên tục thay đổi địa hình theo nhịp chiến thuật.','4 đấu 4 đơn · Tối đa một cơ chế đặc biệt trong đấu trường bánh răng và từ trường biến đổi.','leader-hayate.webp','gym8.webp']
+['Kazanami Ren','Điện','Huy hiệu Tia Chớp','Tháp Denkou · Thành phố Hiryu','Đấu trường năng lượng sạch kết hợp nhà máy thủy điện và tua-bin gió dọc sông chính. Cột thu lôi có thể chuyển hướng và khuếch đại dòng điện.','2 đấu 2 đơn · Cấm Mega Evolution, Z-Moves và Dynamax; bạn được đổi Pokémon tối đa một lần.','leader-ren.webp','gym1.webp',['Denryu',181]],
+['Morioka Shiori','Thường','Huy hiệu Hòa Điệu','Trang viên Mokkin · Thị trấn Koorin','Trang viên gỗ mái tranh với sân cỏ tự nhiên giúp khuếch đại nhịp di chuyển; nổi tiếng với bẫy tốc độ và biến hóa chiêu thức.','2 đấu 2 đơn · Cấm cơ chế đặc biệt; thử thách tập trung vào kiểm soát tốc độ và thích nghi địa hình.','leader-shiori.webp','gym2.webp',['Mimilop',428]],
+['Umihara Taiga','Nước','Huy hiệu Hải Triều','Đấu trường Minato · Thành phố cảng Koho','Sân đấu ngoài trời trên boong tàu huấn luyện neo trong vịnh đá vôi, có điều chỉnh mực nước và bục nổi mô phỏng thủy triều.','3 đấu 3 đơn · Mỗi bên tối đa một cơ chế đặc biệt nếu bạn có trang bị hợp lệ.','leader-taiga.webp','gym3.webp',['Laglarge',260]],
+['Iwamoto Goro','Giác Đấu','Huy hiệu Bàn Thạch','Võ đường Banjaku · Thị trấn Unrei','Võ đường đá cổ khắc chữ trên Vách núi Banjaku, cạnh Khu luyện võ Sekigan. Sân granite chịu được chấn động cận chiến mạnh.','3 đấu 3 đơn · Tối đa một cơ chế đặc biệt; cấm câu giờ thụ động bằng cách rời khỏi sân.','leader-goro.webp','gym4.webp',['Bangiras',248]],
+['Kagura Ayame','Ma','Huy hiệu U Linh','Đền thờ Yuurei · Cố đô Reito','Đền cổ phủ rêu sau cổng torii trên đường đến Hồ Oboro và Rừng trúc Getsuei. Thánh điện phủ sương tím, thắp sáng bằng đèn lân tinh.','3 đấu 3 đơn · Tối đa một Mega Evolution hoặc Z-Move; không có Power Spot cho Dynamax.','leader-ayame.webp','gym5.webp',['Juppeta',354]],
+['Shiranui Kaito','Tiên','Huy hiệu San Hô','Nhà hát Sango · Thành phố biển Hakuhama','Nhà hát mái vòm kính cạnh vịnh san hô. Kaito đồng thời là ngôi sao Contest, nổi tiếng với các màn tấn công rực rỡ.','Đấu đôi 2 đấu 2, có một Pokémon dự bị mỗi bên; tổng cộng phải đánh bại ba Pokémon đối phương. Tối đa một cơ chế đặc biệt.','leader-kaito.webp','gym6.webp',['Kucheat',303]],
+['Amamiya Sora','Cỏ','Huy hiệu Tinh Tú','Vườn Seisou · Thị trấn Seikoo','Khu bảo tồn thực vật phát quang và đài quan sát ngoài trời cạnh thung lũng Hoshikusa. Sân phủ rêu, hoa phát sáng theo chòm sao.','3 đấu 3 đơn · Tối đa một cơ chế đặc biệt; phấn hoa phát quang hoạt động theo nhịp vào ban đêm.','leader-sora.webp','gym7.webp',['Jukain',254]],
+['Tetsuzaki Hayate','Thép','Huy hiệu Cơ Khí','Pháo đài Kikou · Thành phố Seika','Đấu trường công nghệ cao vận hành bằng bánh răng hợp kim và lá chắn từ trường, liên tục thay đổi địa hình theo nhịp chiến thuật.','4 đấu 4 đơn · Tối đa một cơ chế đặc biệt trong đấu trường bánh răng và từ trường biến đổi.','leader-hayate.webp','gym8.webp',['Bossgodora',306]]
 ];
 const elite=[['Kazanami Touma','Lửa','Anh trai của Chủ hội quán Kazanami Ren.','elite-touma.webp','Bursyamo',257],['Suigetsu Mizuki','Đất','Chuyên gia hệ Đất của Tứ Đại Thiên Vương.','elite-mizuki.webp','Gaburias',445],['Kurokawa Shin','Bóng Tối','Chuyên gia hệ Bóng Tối, nổi bật với lối đánh sắc bén và khó đoán.','elite-shin.webp','Absol',359],['Shiratori Reika','Rồng','Chuyên gia hệ Rồng, có mối quan hệ thân thiết với Nhà Vô Địch Ryuzaki Kenjiro.','elite-reika.webp','Kairyu',149]];
 const $=id=>document.getElementById(id);
 $('locations').innerHTML=locations.map(([n,t,d])=>`<article class="loc"><div class="type">${t}</div><h3>${n}</h3><p>${d}</p>${n==='Siêu đô thị Seika'?``:''}</article>`).join('');
 $('professors').innerHTML=professors.map((p,i)=>`<article class="professor-card"><div class="professor-portrait"><img src="${A+p.image}" alt="Giáo sư ${p.name}" loading="lazy" data-lightbox="Giáo sư ${p.name}"></div><div class="professor-card-body"><div class="professor-index">GIÁO SƯ RYUNAN · 0${i+1}</div><h3>Giáo sư ${p.name}</h3><div class="professor-work"><b>Nơi làm việc:</b> ${p.work}</div><p><b>Lĩnh vực nghiên cứu:</b> ${p.field}</p><p><b>Tính cách:</b> ${p.personality}</p><div class="professor-partners"><strong>Pokémon đồng hành</strong>${p.pokemon.map(x=>'<button class="pokemon-link" data-pokemon="'+x[0]+'" data-pokemon-id="'+x[1]+'" data-pokemon-form="'+(x[2]||'')+'"><img class="pokemon-mini" loading="lazy" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(x[2]==='shiny'?'shiny/':'')+x[1]+'.png" alt=""><span>'+x[0]+'</span></button>').join('')}</div></div></article>`).join('');const badgeFiles=['badge-01-tia-chop.png','badge-02-hoa-dieu.png','badge-08-hai-trieu.png','badge-07-ban-thach.png','badge-05-u-linh.png','badge-04-san-ho.png','badge-03-tinh-tu.png','badge-06-co-khi.png'];
-$('gyms').innerHTML=gyms.map((g,i)=>`<article class="gym"><div class="gym-portrait"><img src="${A+g[6]}" alt="Chủ hội quán ${g[0]}" loading="lazy" data-lightbox="Chủ hội quán ${g[0]}"></div><div class="gym-info"><div class="gym-heading"><div class="gym-heading-copy"><div class="gym-meta">HỘI QUÁN 0${i+1} · HỆ ${g[1].toUpperCase()}</div><h3>${g[0]}</h3><div class="badge">${g[2]}</div></div><div class="gym-badge-slot" title="${g[2]}"><img class="gym-badge-art" src="${A+'assets/'+badgeFiles[i]}" alt="${g[2]}" loading="lazy"><small>HUY HIỆU</small></div></div><p><b>${g[3]}</b></p><p>${g[4]}</p><p><b>Thể thức:</b> ${g[5]}</p><img class="gym-photo" src="${A+g[7]}" alt="${g[3]}" loading="lazy" data-lightbox="${g[3]}"></div></article>`).join('');
+$('gyms').innerHTML=gyms.map((g,i)=>`<article class="gym"><div class="gym-portrait"><img src="${A+g[6]}" alt="Chủ hội quán ${g[0]}" loading="lazy" data-lightbox="Chủ hội quán ${g[0]}"></div><div class="gym-info"><div class="gym-heading"><div class="gym-heading-copy"><div class="gym-meta">HỘI QUÁN 0${i+1} · HỆ ${g[1].toUpperCase()}</div><h3>${g[0]}</h3><div class="badge">${g[2]}</div></div><div class="gym-badge-slot" title="${g[2]}"><img class="gym-badge-art" src="${A+'assets/'+badgeFiles[i]}" alt="${g[2]}" loading="lazy"><small>HUY HIỆU</small></div></div><p><b>${g[3]}</b></p><p>${g[4]}</p><p><b>Thể thức:</b> ${g[5]}</p><div class="gym-ace"><strong>Pokémon chủ lực</strong><button class="pokemon-link" data-pokemon="${g[8][0]}" data-pokemon-id="${g[8][1]}"><img class="pokemon-mini" loading="lazy" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${g[8][1]}.png" alt=""><span>${g[8][0]}</span></button></div><img class="gym-photo" src="${A+g[7]}" alt="${g[3]}" loading="lazy" data-lightbox="${g[3]}"></div></article>`).join('');
 $('elite').innerHTML=elite.map((e,i)=>`<article class="profile"><div class="portrait"><img src="${A+e[3]}" alt="${e[0]}" loading="lazy" data-lightbox="${e[0]}"></div><div class="profile-body"><div class="small-label">Tứ Đại Thiên Vương · 0${i+1}</div><h3>${e[0]}</h3><p><b>Chuyên môn: Hệ ${e[1]}</b></p><p>${e[2]}</p><p><b>Pokémon chủ lực:</b></p><button class="pokemon-link" data-pokemon="${e[4]}" data-pokemon-id="${e[5]}"><img class="pokemon-mini" loading="lazy" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${e[5]}.png" alt=""><span>${e[4]}</span></button><p class="muted-note">Có thể sử dụng Tuyệt kỹ Z.</p></div></article>`).join('');
 // Pokémon image popup
 const pv=$('pokemonViewer');document.addEventListener('click',e=>{const b=e.target.closest('.pokemon-link');if(!b)return;const id=b.dataset.pokemonId;const suffix=b.dataset.pokemonForm==='shiny'?'shiny/':'';$('pokemonViewerImage').src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+suffix+id+'.png';$('pokemonViewerImage').onerror=()=>{$('pokemonViewerImage').src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+suffix+id+'.png'};$('pokemonViewerName').textContent=b.dataset.pokemon;pv.classList.add('open');pv.setAttribute('aria-hidden','false')});$('pokemonViewerClose').onclick=()=>{pv.classList.remove('open');pv.setAttribute('aria-hidden','true')};pv.onclick=e=>{if(e.target===pv){pv.classList.remove('open');pv.setAttribute('aria-hidden','true')}};
@@ -561,7 +552,7 @@ document.addEventListener('keydown',e=>{
 // lightweight image viewer
 let gallery=[],idx=0,zoom=1;const lb=$('lightbox');function show(){const it=gallery[idx];$('lbImg').src=it.src;$('lbImg').alt=it.caption;$('lbCaption').textContent=it.caption;zoom=1;$('lbImg').style.transform='scale(1)';lb.classList.add('open')}function openImage(img){const all=[...document.querySelectorAll('[data-lightbox]')];gallery=all.map(el=>({src:el.src,caption:el.dataset.lightbox||el.alt}));idx=Math.max(0,all.indexOf(img));show()}document.addEventListener('click',e=>{const img=e.target.closest('[data-lightbox]');if(img)openImage(img)});function step(n){if(!gallery.length)return;idx=(idx+n+gallery.length)%gallery.length;show()}$('lbClose').onclick=()=>lb.classList.remove('open');$('lbPrev').onclick=()=>step(-1);$('lbNext').onclick=()=>step(1);$('zoomIn').onclick=()=>{zoom=Math.min(4,zoom+.25);$('lbImg').style.transform=`scale(${zoom})`};$('zoomOut').onclick=()=>{zoom=Math.max(1,zoom-.25);$('lbImg').style.transform=`scale(${zoom})`};$('zoomReset').onclick=()=>{zoom=1;$('lbImg').style.transform='scale(1)'};lb.onclick=e=>{if(e.target===lb)lb.classList.remove('open')};document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1);if(e.key==='+')$('zoomIn').click();if(e.key==='-')$('zoomOut').click()});
 
-/* Random continuous Pokémon music player: shuffle all uploaded tracks. */
+/* Random continuous Pokémon music player: one rotating Poké Ball control. */
 (()=>{
  const tracks=[
   {title:'Aim to Be a Pokémon Master · Opening 1',src:'assets/music/pokemon-op1.mp3'},
@@ -572,77 +563,36 @@ let gallery=[],idx=0,zoom=1;const lb=$('lightbox');function show(){const it=gall
   {title:'Tình Bạn Vĩnh Cửu · Cindy V',src:'assets/music/tinh-ban-vinh-cuu-cindy-v.mp3'}
  ];
  const audio=document.getElementById('siteAudio');
- const play=document.getElementById('musicPlay');
- const next=document.getElementById('musicNext');
+ const ball=document.getElementById('musicPlay');
  const title=document.getElementById('musicTitle');
  const status=document.getElementById('musicStatus');
- if(!audio||!play||!next)return;
+ if(!audio||!ball)return;
  let bag=[],current=-1;
- const refill=()=>{
+ function refill(){
   bag=tracks.map((_,i)=>i).filter(i=>i!==current);
-  for(let i=bag.length-1;i>0;i--){
-   const j=Math.floor(Math.random()*(i+1));
-   [bag[i],bag[j]]=[bag[j],bag[i]];
-  }
- };
+  for(let i=bag.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[bag[i],bag[j]]=[bag[j],bag[i]];}
+ }
  async function playNext(){
   if(!bag.length)refill();
   current=bag.pop();
-  const track=tracks[current];
-  audio.src=track.src;
-  title.textContent=track.title;
-  status.textContent='Đang phát ngẫu nhiên · Tự chuyển bài khi kết thúc';
-  try{
-   await audio.play();
-   play.textContent='Ⅱ';
-   status.textContent='Đang phát ngẫu nhiên · Tự chuyển bài khi kết thúc';
-  }catch(err){
-   play.textContent='▶';
-   status.textContent='Trình duyệt chặn tự phát có tiếng · Chạm vào trang hoặc nút phát để bật nhạc';
-  }
+  audio.src=tracks[current].src;
+  title.textContent=tracks[current].title;
+  try{await audio.play();}catch(err){status.textContent='Trình duyệt cần thao tác chạm để cho phép phát nhạc.';}
  }
- play.addEventListener('click',async()=>{
+ ball.addEventListener('click',async()=>{
   if(audio.paused){
    if(!audio.src){await playNext();return;}
-   try{
-    await audio.play();
-    play.textContent='Ⅱ';
-    status.textContent='Đang phát ngẫu nhiên · Tự chuyển bài khi kết thúc';
-   }catch(err){
-    status.textContent='Chưa thể phát nhạc · Hãy thử nhấn phát lần nữa';
-   }
-  }else{
-   audio.pause();
-   play.textContent='▶';
-   status.textContent='Đã tạm dừng';
-  }
+   try{await audio.play();}catch(err){status.textContent='Chưa thể phát nhạc. Hãy chạm lại quả Poké Ball.';}
+  }else{audio.pause();}
  });
- next.addEventListener('click',()=>playNext());
- audio.addEventListener('ended',()=>playNext());
- audio.addEventListener('error',()=>{
-  if(audio.src){
-   status.textContent='Không tải được tệp nhạc: '+(tracks[current]?.src||'');
-   play.textContent='▶';
-  }
- });
+ audio.addEventListener('ended',playNext);
+ audio.addEventListener('play',()=>{ball.classList.add('is-playing');ball.setAttribute('aria-label','Tạm dừng nhạc');});
+ audio.addEventListener('pause',()=>{ball.classList.remove('is-playing');ball.setAttribute('aria-label','Phát nhạc');});
+ audio.addEventListener('error',()=>{if(audio.src){status.textContent='Không tải được tệp nhạc: '+(tracks[current]?.src||'');}});
  audio.volume=.5;
- const player=document.querySelector('.music-player');
- audio.addEventListener('play',()=>player?.classList.add('is-playing'));
- audio.addEventListener('pause',()=>player?.classList.remove('is-playing'));
- // Attempt audible autoplay on page load. If blocked, the first ordinary page
- // interaction starts playback; explicit player controls remain available.
  playNext();
- const startAfterGesture=()=>{
-  if(!audio.src||!audio.paused)return;
-  audio.play().then(()=>{
-   play.textContent='Ⅱ';
-   status.textContent='Đang phát ngẫu nhiên · Tự chuyển bài khi kết thúc';
-  }).catch(()=>{});
- };
- document.addEventListener('pointerdown',e=>{
-  if(e.target.closest('#musicPlay,#musicNext'))return;
-  startAfterGesture();
- },{once:true});
+ const startAfterGesture=()=>{if(audio.paused&&audio.src)audio.play().catch(()=>{});};
+ document.addEventListener('pointerdown',startAfterGesture,{once:true});
  document.addEventListener('keydown',startAfterGesture,{once:true});
 })();
 
@@ -759,5 +709,29 @@ let gallery=[],idx=0,zoom=1;const lb=$('lightbox');function show(){const it=gall
 }
 .music-controls #musicPlay{flex:0 0 27px!important;background:#f1c66f!important;border-color:#f1c66f!important;color:#183149!important}
 @media(max-width:520px){.music-player{left:9px!important;bottom:9px!important;width:min(245px,calc(100vw - 18px))!important;padding:6px 8px!important}}
+</style>
+
+<style>
+/* Minimal floating Poké Ball only — no rectangular player panel. */
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.music-ball{
+ position:fixed!important;left:18px!important;bottom:18px!important;z-index:100!important;
+ width:70px!important;height:70px!important;padding:0!important;border:0!important;
+ border-radius:50%!important;background:transparent!important;box-shadow:0 5px 18px rgba(20,40,55,.24)!important;
+ cursor:pointer!important;display:grid!important;place-items:center!important;
+}
+.music-ball-art{
+ position:relative;display:block;width:64px;height:64px;border:4px solid #fff;border-radius:50%;
+ background:linear-gradient(to bottom,#ef625d 0 46%,#233d54 46% 54%,#fff 54% 100%);
+ box-shadow:0 0 0 2px #d7e3e9,0 3px 8px #0003;overflow:hidden;
+}
+.music-ball-art:before{content:"";position:absolute;left:50%;top:50%;width:17px;height:17px;transform:translate(-50%,-50%);border:4px solid #233d54;border-radius:50%;background:#fff;box-shadow:0 0 0 2px #fff}
+.music-ball.is-playing .music-ball-art{animation:ryunan-ball-spin 2.4s linear infinite}
+@keyframes ryunan-ball-spin{to{transform:rotate(360deg)}}
+.music-ball:focus-visible{outline:3px solid #e7b75f;outline-offset:5px}
+.gym-ace{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:12px 0 3px;padding-top:10px;border-top:1px solid var(--line)}
+.gym-ace>strong{flex:0 0 100%;font-size:10px;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.gym-ace .pokemon-link{margin:0}
+@media(max-width:520px){.music-ball{left:12px!important;bottom:12px!important;width:64px!important;height:64px!important}.music-ball-art{width:58px;height:58px}}
 </style>
 </body></html>
