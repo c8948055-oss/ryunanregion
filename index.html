@@ -520,7 +520,7 @@ const gyms=[
 ['Kazanami Ren','Điện','Huy hiệu Tia Chớp','Tháp Denkou · Thành phố Hiryu','Đấu trường năng lượng sạch kết hợp nhà máy thủy điện và tua-bin gió dọc sông chính. Cột thu lôi có thể chuyển hướng và khuếch đại dòng điện.','2 đấu 2 đơn · Cấm Mega Evolution, Z-Moves và Dynamax; bạn được đổi Pokémon tối đa một lần.','leader-ren.webp','gym1.webp',['Denryu',181]],
 ['Morioka Shiori','Thường','Huy hiệu Hòa Điệu','Trang viên Mokkin · Thị trấn Koorin','Trang viên gỗ mái tranh với sân cỏ tự nhiên giúp khuếch đại nhịp di chuyển; nổi tiếng với bẫy tốc độ và biến hóa chiêu thức.','2 đấu 2 đơn · Cấm cơ chế đặc biệt; thử thách tập trung vào kiểm soát tốc độ và thích nghi địa hình.','leader-shiori.webp','gym2.webp',['Mimilop',428]],
 ['Umihara Taiga','Nước','Huy hiệu Hải Triều','Đấu trường Minato · Thành phố cảng Koho','Sân đấu ngoài trời trên boong tàu huấn luyện neo trong vịnh đá vôi, có điều chỉnh mực nước và bục nổi mô phỏng thủy triều.','3 đấu 3 đơn · Mỗi bên tối đa một cơ chế đặc biệt nếu bạn có trang bị hợp lệ.','leader-taiga.webp','gym3.webp',['Laglarge',260]],
-['Iwamoto Goro','Giác Đấu','Huy hiệu Bàn Thạch','Võ đường Banjaku · Thị trấn Unrei','Võ đường đá cổ khắc chữ trên Vách núi Banjaku, cạnh Khu luyện võ Sekigan. Sân granite chịu được chấn động cận chiến mạnh.','3 đấu 3 đơn · Tối đa một cơ chế đặc biệt; cấm câu giờ thụ động bằng cách rời khỏi sân.','leader-goro.webp','gym4.webp',['Bangiras',248]],
+['Iwamoto Goro','Giác Đấu','Huy hiệu Bàn Thạch','Võ đường Banjaku · Thị trấn Unrei','Võ đường đá cổ khắc chữ trên Vách núi Banjaku, cạnh Khu luyện võ Sekigan. Sân granite chịu được chấn động cận chiến mạnh.','3 đấu 3 đơn · Tối đa một cơ chế đặc biệt; cấm câu giờ thụ động bằng cách rời khỏi sân.','leader-goro.webp','gym4.webp',['Erureido',475]],
 ['Kagura Ayame','Ma','Huy hiệu U Linh','Đền thờ Yuurei · Cố đô Reito','Đền cổ phủ rêu sau cổng torii trên đường đến Hồ Oboro và Rừng trúc Getsuei. Thánh điện phủ sương tím, thắp sáng bằng đèn lân tinh.','3 đấu 3 đơn · Tối đa một Mega Evolution hoặc Z-Move; không có Power Spot cho Dynamax.','leader-ayame.webp','gym5.webp',['Juppeta',354]],
 ['Shiranui Kaito','Tiên','Huy hiệu San Hô','Nhà hát Sango · Thành phố biển Hakuhama','Nhà hát mái vòm kính cạnh vịnh san hô. Kaito đồng thời là ngôi sao Contest, nổi tiếng với các màn tấn công rực rỡ.','Đấu đôi 2 đấu 2, có một Pokémon dự bị mỗi bên; tổng cộng phải đánh bại ba Pokémon đối phương. Tối đa một cơ chế đặc biệt.','leader-kaito.webp','gym6.webp',['Kucheat',303]],
 ['Amamiya Sora','Cỏ','Huy hiệu Tinh Tú','Vườn Seisou · Thị trấn Seikoo','Khu bảo tồn thực vật phát quang và đài quan sát ngoài trời cạnh thung lũng Hoshikusa. Sân phủ rêu, hoa phát sáng theo chòm sao.','3 đấu 3 đơn · Tối đa một cơ chế đặc biệt; phấn hoa phát quang hoạt động theo nhịp vào ban đêm.','leader-sora.webp','gym7.webp',['Jukain',254]],
@@ -716,23 +716,23 @@ let gallery=[],idx=0,zoom=1;const lb=$('lightbox');function show(){const it=gall
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .music-ball{
  position:fixed!important;left:auto!important;right:18px!important;bottom:18px!important;z-index:100!important;
- width:70px!important;height:70px!important;padding:0!important;border:0!important;
+ width:48px!important;height:48px!important;padding:0!important;border:0!important;
  border-radius:50%!important;background:transparent!important;box-shadow:0 5px 18px rgba(20,40,55,.24)!important;
  cursor:pointer!important;display:grid!important;place-items:center!important;
 }
 .music-ball-art{
- position:relative;display:block;width:64px;height:64px;border:4px solid #fff;border-radius:50%;
+ position:relative;display:block;width:44px;height:44px;border:3px solid #fff;border-radius:50%;
  background:linear-gradient(to bottom,#ef625d 0 46%,#233d54 46% 54%,#fff 54% 100%);
  box-shadow:0 0 0 2px #d7e3e9,0 3px 8px #0003;overflow:hidden;
 }
-.music-ball-art:before{content:"";position:absolute;left:50%;top:50%;width:17px;height:17px;transform:translate(-50%,-50%);border:4px solid #233d54;border-radius:50%;background:#fff;box-shadow:0 0 0 2px #fff}
+.music-ball-art:before{content:"";position:absolute;left:50%;top:50%;width:12px;height:12px;transform:translate(-50%,-50%);border:3px solid #233d54;border-radius:50%;background:#fff;box-shadow:0 0 0 2px #fff}
 .music-ball.is-playing .music-ball-art{animation:ryunan-ball-spin 2.4s linear infinite}
 @keyframes ryunan-ball-spin{to{transform:rotate(360deg)}}
 .music-ball:focus-visible{outline:3px solid #e7b75f;outline-offset:5px}
 .gym-ace{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:12px 0 3px;padding-top:10px;border-top:1px solid var(--line)}
 .gym-ace>strong{flex:0 0 100%;font-size:10px;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
 .gym-ace .pokemon-link{margin:0}
-@media(max-width:520px){.music-ball{left:auto!important;right:12px!important;bottom:12px!important;width:64px!important;height:64px!important}.music-ball-art{width:58px;height:58px}}
+@media(max-width:520px){.music-ball{left:auto!important;right:12px!important;bottom:12px!important;width:44px!important;height:44px!important}.music-ball-art{width:40px;height:40px}}
 #toTop{display:none!important}
 </style>
 </body></html>
