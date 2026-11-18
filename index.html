@@ -414,23 +414,32 @@ img:not(#lbImg):focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 </style>
 </head>
 <body>
-<header class="nav"><div class="wrap nav-in"><a class="brand" href="#trang-chu">POKÉMON RYUNAN<small>REGIONAL GUIDE</small></a><button class="menu" id="menuBtn" aria-label="Mở danh mục">☰</button><nav class="links" id="navLinks"><a href="#trang-chu">Trang chủ</a><a href="#ban-do">Bản đồ</a><a href="#dia-danh">Địa danh</a><a href="#tuyen-duong">Tuyến đường</a><a href="#giao-su">Giáo sư</a><a href="#hoi-quan">Hội quán</a><a href="#thien-vuong">Thiên Vương</a><a href="#vo-dich">Vô Địch</a><a href="#lien-doan">Liên đoàn</a></nav></div></header>
+<header class="nav"><div class="wrap nav-in"><a class="brand" href="#trang-chu">POKÉMON RYUNAN<small>REGIONAL GUIDE</small></a><button class="menu" id="menuBtn" aria-label="Mở danh mục">☰</button><nav class="links" id="navLinks"><a href="#trang-chu">Trang chủ</a><a href="#ban-do">Bản đồ</a><a href="#dia-danh">Địa danh</a><a href="#giao-su">Giáo sư</a><a href="#hoi-quan">Hội quán</a><a href="#thien-vuong">Thiên Vương</a><a href="#vo-dich">Vô Địch</a><a href="#lien-doan">Liên đoàn</a></nav></div></header>
 <aside class="music-player" aria-label="Trình phát nhạc Pokémon">
- <div class="music-player-top"><div class="music-disc">♫</div><div class="music-meta"><div class="music-kicker">RYUNAN RADIO · SHUFFLE PLAY</div><div class="music-title" id="musicTitle">Chưa phát nhạc · Nhấn Bật nhạc</div></div></div>
- <div class="music-controls"><button id="musicPlay" type="button">▶ Bật nhạc</button><button id="musicNext" type="button" aria-label="Bài tiếp theo">⏭</button><label>Âm lượng <input id="musicVolume" type="range" min="0" max="1" step=".05" value=".55"></label></div>
- <div class="music-note" id="musicStatus">Phát ngẫu nhiên liên tục · Không lặp bài cho đến khi phát hết danh sách</div>
- <audio id="siteAudio" preload="none"></audio>
+ <div class="music-player-top">
+  <div class="music-disc" aria-hidden="true">♫</div>
+  <div class="music-meta">
+   <div class="music-kicker">RYUNAN RADIO · SHUFFLE</div>
+   <div class="music-title" id="musicTitle">Đang chuẩn bị danh sách nhạc…</div>
+  </div>
+  <div class="music-controls">
+   <button id="musicPlay" type="button" aria-label="Tạm dừng hoặc phát nhạc">Ⅱ</button>
+   <button id="musicNext" type="button" aria-label="Bài tiếp theo">⏭</button>
+  </div>
+ </div>
+ <div class="music-note" id="musicStatus" aria-live="polite">Đang thử tự phát nhạc…</div>
+ <audio id="siteAudio" preload="auto" autoplay></audio>
 </aside>
 
 <main>
-<section class="hero" id="trang-chu"><div class="wrap hero-grid"><div><div class="eyebrow">Pokémon Regional Encyclopedia · Việt Nam</div><h1>Chào mừng đến với <span style="color:var(--blue)">Ryunan</span></h1><p class="lead">Một vùng đất trải dài dọc bờ đại dương, nơi núi đá vôi, cao nguyên, rừng nguyên sinh, cố đô di sản và những quần đảo nhiệt đới cùng tạo nên một thế giới Pokémon đa dạng.</p><p></p><div class="actions"><a class="btn primary" href="#ban-do">Khám phá bản đồ</a><a class="btn secondary" href="#hoi-quan">Tìm hiểu 8 Hội quán</a></div><div class="stats"><div><strong>18</strong><span>Địa danh nổi bật</span></div><div><strong>8</strong><span>Giáo sư & viện nghiên cứu</span></div><div><strong>8</strong><span>Hội quán Pokémon</span></div><div><strong>3</strong><span>Tuyến đường biển</span></div></div></div><div class="hero-image"><img src="https://c8948055-oss.github.io/ryunanregion/region-map.webp" alt="Bản đồ vùng Ryunan" loading="eager"></div></div></section>
+<section class="hero" id="trang-chu"><div class="wrap hero-grid"><div><div class="eyebrow">Pokémon Regional Encyclopedia · Việt Nam</div><h1>Chào mừng đến với <span style="color:var(--blue)">Ryunan</span></h1><p class="lead">Một vùng đất trải dài dọc bờ đại dương, nơi núi đá vôi, cao nguyên, rừng nguyên sinh, cố đô di sản và những quần đảo nhiệt đới cùng tạo nên một thế giới Pokémon đa dạng.</p><p></p><div class="actions"><a class="btn primary" href="#ban-do">Khám phá bản đồ</a><a class="btn secondary" href="#hoi-quan">Tìm hiểu 8 Hội quán</a></div><div class="stats"><div><strong>18</strong><span>Địa danh nổi bật</span></div><div><strong>8</strong><span>Giáo sư & viện nghiên cứu</span></div><div><strong>8</strong><span>Hội quán Pokémon</span></div></div></div><div class="hero-image"><img src="https://c8948055-oss.github.io/ryunanregion/region-map.webp" alt="Bản đồ vùng Ryunan" loading="eager"></div></div></section>
 <section class="section" id="ban-do"><div class="wrap"><div class="section-head"><div class="eyebrow">01 · Định vị vùng đất</div><h2>Bản đồ Pokémon</h2><p>Ryunan nằm ở phía Nam của bản đồ thế giới Pokémon. Mở từng bản đồ để xem chi tiết địa hình, địa danh và mạng lưới giao thông.</p></div><div class="maps"><article class="map-card"><img src="https://c8948055-oss.github.io/ryunanregion/world-map.webp" alt="Bản đồ thế giới Pokémon" data-lightbox="Bản đồ thế giới Pokémon"><h3>Bản đồ thế giới Pokémon</h3><p>Vị trí tương quan giữa Ryunan và các vùng đất Pokémon khác.</p></article><article class="map-card"><img src="https://c8948055-oss.github.io/ryunanregion/region-map.webp" alt="Bản đồ vùng Ryunan" data-lightbox="Bản đồ vùng Ryunan"><h3>Bản đồ vùng Ryunan</h3><p>Bản đồ địa hình, thành phố, thị trấn, tuyến đường bộ và đường biển.</p></article></div><div class="three"><article class="info"><div class="ico">🏔️</div><h3>Miền Bắc</h3><p>Núi cao hùng vĩ, thung lũng phủ sương và vùng châu thổ sông lớn.</p></article><article class="info"><div class="ico">🏯</div><h3>Miền Trung</h3><p>Dải đất hẹp từ núi ra biển, có đầm phá, di sản cổ và những bãi cát dài.</p></article><article class="info"><div class="ico">🌴</div><h3>Miền Nam</h3><p>Châu thổ màu mỡ, mạng lưới kênh rạch và các cụm đảo ngoài khơi.</p></article></div><div class="three"><article class="info"><h3>Khí hậu nhiệt đới gió mùa</h3><p>Miền Bắc có bốn mùa; miền Trung nắng nóng và thường có bão cuối hè–thu; miền Nam ấm quanh năm với mùa mưa và mùa khô rõ rệt.</p></article><article class="info"><h3>Vùng núi & cao nguyên</h3><p>Khí hậu mát mẻ, nhiều nơi quanh năm phủ sương; địa hình gồm núi đá vôi, cao nguyên bazan và thung lũng.</p></article><article class="info"><h3>Giao thông</h3><p>Đường sắt cao tốc Bắc–Nam, phà và tàu khách từ cảng Koho đến quần đảo Ryuwan, cùng đường mòn xuyên rừng và đèo núi.</p></article></div></div></section>
 <section class="section" id="dia-danh"><div class="wrap"><div class="section-head"><div class="eyebrow">02 · Khám phá vùng đất</div><h2>18 địa danh nổi bật</h2><p>Từ đô thị hiện đại đến những vùng hoang dã lâu đời — mỗi địa điểm đều có cảnh quan và hệ sinh thái riêng.</p></div><div class="location-grid" id="locations"></div></div></section>
-<section class="section" id="tuyen-duong"><div class="wrap"><div class="section-head"><div class="eyebrow">03 · Hành trình & kết nối</div><h2>Hệ thống tuyến đường</h2><p>Các tuyến đường bộ và đường biển kết nối đồng bằng, cao nguyên, rừng nguyên sinh, thành phố và những cụm đảo ven bờ. Chọn từng khu vực để xem lộ trình.</p></div><div class="route-groups" id="routes"></div></div></section>
-<section class="section" id="giao-su"><div class="wrap"><div class="section-head"><div class="eyebrow">04 · Mạng lưới khoa học</div><h2>Tám Giáo sư Ryunan</h2><p>Tám chuyên gia phụ trách các lĩnh vực nghiên cứu khác nhau, từ sinh thái và địa chất đến di truyền, khảo cổ và y học Pokémon.</p></div><div class="profiles" id="professors"></div><p class="muted-note" style="margin-top:16px">Nhấn vào ảnh để phóng to. Ảnh Giáo sư và cơ sở nghiên cứu được ghép theo đúng chuyên ngành.</p></div></section>
-<section class="section" id="hoi-quan"><div class="wrap"><div class="section-head"><div class="eyebrow">05 · Thử thách Liên đoàn</div><h2>Tám Hội quán Pokémon</h2><p>Mỗi Hội quán có một phong cách chiến đấu và địa hình riêng. Thu thập đủ tám Huy hiệu để giành quyền tham dự Giải vô địch Liên đoàn Ryunan.</p></div><div class="gym-grid" id="gyms"></div><div class="info" style="margin-top:18px"><h3>Quy định thi đấu chung</h3><p>Trong trận đấu lấy Huy hiệu chính thức, bạn được tự do thu hồi và đổi Pokémon; Chủ hội quán phải giữ đội hình đăng ký ban đầu, trừ khi bị buộc phải đổi bởi chiêu thức. Mỗi bên được kích hoạt tối đa một cơ chế đặc biệt trong trận — Mega Evolution, Z-Moves hoặc Dynamax/Gigantamax tại Hội quán có Power Spot. Số lượng Pokémon và quyền sử dụng cơ chế đặc biệt của Chủ hội quán được điều chỉnh theo số Huy hiệu bạn đang có.</p></div></div></section>
-<section class="section" id="thien-vuong"><div class="wrap"><div class="section-head"><div class="eyebrow">06 · Cửa ải cuối cùng</div><h2>Tứ Đại Thiên Vương</h2><p>Những chuyên gia hàng đầu của Liên đoàn Ryunan. Người chiến thắng Giải vô địch Liên đoàn có quyền thách đấu cả bốn thành viên trước khi đối đầu Nhà Vô Địch.</p></div><div class="elite" id="elite"></div></div></section>
-<section class="section" id="vo-dich"><div class="wrap"><div class="section-head"><div class="eyebrow">07 · Nhà Vô Địch đương nhiệm</div><h2>Ryuzaki Kenjiro</h2><p>Nhà Vô Địch đương nhiệm của Liên đoàn Pokémon Ryunan.</p></div><article class="champion champion-compact"><div class="champion-art"><img src="https://c8948055-oss.github.io/ryunanregion/ryuzaki-kenjiro.webp" alt="Ryuzaki Kenjiro" loading="lazy"></div><div class="champion-details"><div class="eyebrow">POKÉMON CHỦ LỰC</div><h3>Fushigibana</h3><p>Pokémon chủ lực của Nhà Vô Địch Ryuzaki Kenjiro.</p><button class="pokemon-link" data-pokemon="Fushigibana" data-pokemon-id="3">Xem ảnh Fushigibana</button></div></article></div></section>
+
+<section class="section" id="giao-su"><div class="wrap"><div class="section-head"><div class="eyebrow">03 · Mạng lưới khoa học</div><h2>Tám Giáo sư Ryunan</h2><p>Tám chuyên gia phụ trách các lĩnh vực nghiên cứu khác nhau, từ sinh thái và địa chất đến di truyền, khảo cổ và y học Pokémon.</p></div><div class="profiles" id="professors"></div><p class="muted-note" style="margin-top:16px">Nhấn vào ảnh để phóng to. Ảnh Giáo sư và cơ sở nghiên cứu được ghép theo đúng chuyên ngành.</p></div></section>
+<section class="section" id="hoi-quan"><div class="wrap"><div class="section-head"><div class="eyebrow">04 · Thử thách Liên đoàn</div><h2>Tám Hội quán Pokémon</h2><p>Mỗi Hội quán có một phong cách chiến đấu và địa hình riêng. Thu thập đủ tám Huy hiệu để giành quyền tham dự Giải vô địch Liên đoàn Ryunan.</p></div><div class="gym-grid" id="gyms"></div></div></section>
+<section class="section" id="thien-vuong"><div class="wrap"><div class="section-head"><div class="eyebrow">05 · Cửa ải cuối cùng</div><h2>Tứ Đại Thiên Vương</h2><p>Những chuyên gia hàng đầu của Liên đoàn Ryunan. Người chiến thắng Giải vô địch Liên đoàn có quyền thách đấu cả bốn thành viên trước khi đối đầu Nhà Vô Địch.</p></div><div class="elite" id="elite"></div></div></section>
+<section class="section" id="vo-dich"><div class="wrap"><div class="section-head"><div class="eyebrow">06 · Nhà Vô Địch đương nhiệm</div><h2>Ryuzaki Kenjiro</h2><p>Nhà Vô Địch đương nhiệm của Liên đoàn Pokémon Ryunan.</p></div><article class="champion champion-compact"><div class="champion-art"><img src="https://c8948055-oss.github.io/ryunanregion/ryuzaki-kenjiro.webp" alt="Ryuzaki Kenjiro" loading="lazy"></div><div class="champion-details"><div class="eyebrow">POKÉMON CHỦ LỰC</div><h3>Fushigibana</h3><p>Pokémon chủ lực của Nhà Vô Địch Ryuzaki Kenjiro.</p><button class="pokemon-link" data-pokemon="Fushigibana" data-pokemon-id="3">Xem ảnh Fushigibana</button></div></article></div></section>
 <section class="section" id="lien-doan"><div class="wrap"><div class="section-head"><div class="eyebrow">08 · Sự kiện & trải nghiệm</div><h2>Liên đoàn và hoạt động đặc thù</h2><p>Ryunan mở ra nhiều con đường trải nghiệm, không chỉ dành riêng cho các Nhà Huấn Luyện chiến đấu.</p></div><div class="activities"><article class="activity"><h3>Giải vô địch Liên đoàn</h3><p>Giải đấu theo mùa tổ chức tại sân vận động trung tâm thành phố Hiryu. Người chiến thắng được quyền thách đấu Tứ Đại Thiên Vương và Nhà Vô Địch.</p></article><article class="activity"><h3>Pokémon Contest</h3><p>Các cuộc thi biểu diễn lớn được tổ chức tại thành phố biển Hakuhama, với sân khấu tại Nhà hát Biểu diễn Trung tâm.</p></article><article class="activity"><h3>Thử thách Đảo</h3><p>Hoạt động thử thách diễn ra tại quần đảo Ryuwan vào mùa khô, gắn với thiên nhiên và văn hóa đảo.</p></article><article class="activity"><h3>Trại hè Huấn luyện</h3><p>Chương trình dành cho thanh thiếu niên trong vùng, tổ chức tại quần đảo Ryuwan.</p></article></div><div class="three"><article class="info"><h3>Hệ sinh thái Pokémon</h3><p>Rừng Koorin có nhiều Pokémon hệ Cỏ, Côn Trùng và chim; Unrei nổi bật với Pokémon hệ Đá và Băng; vịnh Koho và Ryuwan có hệ sinh thái Nước; Seika tập trung các loài hệ Thép và Điện.</p></article><article class="info"><h3>Các cơ chế chiến đấu</h3><p>Năng lượng đặc thù của Ryunan cho phép sử dụng Mega Evolution, Z-Moves, Dynamax/Gigantamax và Terastal khi bạn có trang bị hợp lệ.</p></article><article class="info"><h3>Nơi tìm thấy năng lượng</h3><p>Đá Mega tại Hang Ryukutsu và di tích Reito; Tinh thể Z tại đền thờ Ryuwan; Power Spot tại sân vận động Seika và Đỉnh Tenpo; tinh thể Terastal trong hang đá vôi.</p></article></div></div></section>
 <section class="section" id="trai-nghiem"><div class="wrap"><div class="section-head"><div class="eyebrow">09 · Cẩm nang dành cho bạn</div><h2>Những điều cần biết khi khám phá Ryunan</h2><p>Một số nguyên tắc cơ bản giúp hành trình của bạn và Pokémon diễn ra an toàn, công bằng và tôn trọng thế giới tự nhiên.</p></div><div class="rules"><article class="rule"><h3>Quyền tự chủ của Pokémon</h3><p>Pokémon có cảm xúc và ý chí riêng. Tiến hóa là quyết định của Pokémon; bạn có thể hỗ trợ bằng vật phẩm hoặc điều kiện phù hợp, nhưng Pokémon có thể từ chối hoặc trì hoãn.</p></article><article class="rule"><h3>Thu phục có giới hạn</h3><p>Poké Ball không bảo đảm thu phục tuyệt đối. Pokémon hoang dã có thể kháng cự, thoát ra hoặc từ chối. Không sử dụng Poké Ball lên con người và luôn tuân thủ quy định bảo tồn.</p></article><article class="rule"><h3>Đội hình & lưu trữ</h3><p>Bạn có thể mang theo tối đa sáu Pokémon trong đội hình đang hoạt động. Pokémon bắt thêm được chuyển đến cơ sở lưu trữ/phòng thí nghiệm đã đăng ký; có thể đổi đội hình tại Trung tâm Pokémon.</p></article><article class="rule"><h3>Chiêu thức</h3><p>Mỗi Pokémon sử dụng tối đa bốn chiêu thức. Khi học chiêu thức mới, Pokémon cần thay thế một chiêu thức cũ.</p></article><article class="rule"><h3>Trung tâm Pokémon & PC</h3><p>Trung tâm Pokémon cung cấp chẩn đoán, điều trị, phục hồi thể lực, chăm sóc khẩn cấp, lưu trú, liên lạc và chuyển Pokémon qua mạng PC.</p></article><article class="rule"><h3>Giấy phép thám hiểm</h3><p>Các khu vực nguy hiểm hoặc hạn chế như miệng núi lửa, hang cổ, lõi rừng nguyên sinh và vùng biển sâu có thể yêu cầu giấy phép cùng Pokémon đủ khả năng di chuyển tại địa hình đó.</p></article></div><div class="info" style="margin-top:15px"><h3>Những nghề nghiệp trong thế giới Pokémon</h3><p>Nhà Huấn Luyện · Điều phối viên · Người chăm sóc Pokémon · Nhà Nghiên cứu · Nhà khảo cổ · Kiểm lâm · Bác sĩ Pokémon · Đặc vụ · Thương nhân · Nghệ nhân chế tác và nhiều công việc khác.</p></div></div></section>
 </main>
@@ -489,7 +498,6 @@ const gyms=[
 const elite=[['Kazanami Touma','Lửa','Anh trai của Chủ hội quán Kazanami Ren.','elite-touma.webp','Bursyamo',257],['Suigetsu Mizuki','Đất','Chuyên gia hệ Đất của Tứ Đại Thiên Vương.','elite-mizuki.webp','Gaburias',445],['Kurokawa Shin','Bóng Tối','Chuyên gia hệ Bóng Tối, nổi bật với lối đánh sắc bén và khó đoán.','elite-shin.webp','Absol',359],['Shiratori Reika','Rồng','Chuyên gia hệ Rồng, có mối quan hệ thân thiết với Nhà Vô Địch Ryuzaki Kenjiro.','elite-reika.webp','Kairyu',149]];
 const $=id=>document.getElementById(id);
 $('locations').innerHTML=locations.map(([n,t,d])=>`<article class="loc"><div class="type">${t}</div><h3>${n}</h3><p>${d}</p>${n==='Siêu đô thị Seika'?``:''}</article>`).join('');
-$('routes').innerHTML=routes.map(([title,items],i)=>`<details class="route-group" ${i===0?'open':''}><summary>${title} · ${items.length} tuyến</summary><div class="routes">${items.map(([n,d])=>`<div class="route"><b>${n>=23?'BIỂN '+n:'TUYẾN '+String(n).padStart(2,'0')}</b>　${d}</div>`).join('')}</div></details>`).join('');
 $('professors').innerHTML=professors.map((p,i)=>`<article class="professor-card"><div class="professor-portrait"><img src="${A+p.image}" alt="Giáo sư ${p.name}" loading="lazy" data-lightbox="Giáo sư ${p.name}"></div><div class="professor-card-body"><div class="professor-index">GIÁO SƯ RYUNAN · 0${i+1}</div><h3>Giáo sư ${p.name}</h3><div class="professor-work"><b>Nơi làm việc:</b> ${p.work}</div><p><b>Lĩnh vực nghiên cứu:</b> ${p.field}</p><p><b>Tính cách:</b> ${p.personality}</p><div class="professor-partners"><strong>Pokémon đồng hành</strong>${p.pokemon.map(x=>'<button class="pokemon-link" data-pokemon="'+x[0]+'" data-pokemon-id="'+x[1]+'" data-pokemon-form="'+(x[2]||'')+'"><img class="pokemon-mini" loading="lazy" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(x[2]==='shiny'?'shiny/':'')+x[1]+'.png" alt=""><span>'+x[0]+'</span></button>').join('')}</div></div></article>`).join('');const badgeFiles=['badge-01-tia-chop.png','badge-02-hoa-dieu.png','badge-08-hai-trieu.png','badge-07-ban-thach.png','badge-05-u-linh.png','badge-04-san-ho.png','badge-03-tinh-tu.png','badge-06-co-khi.png'];
 $('gyms').innerHTML=gyms.map((g,i)=>`<article class="gym"><div class="gym-portrait"><img src="${A+g[6]}" alt="Chủ hội quán ${g[0]}" loading="lazy" data-lightbox="Chủ hội quán ${g[0]}"></div><div class="gym-info"><div class="gym-heading"><div class="gym-heading-copy"><div class="gym-meta">HỘI QUÁN 0${i+1} · HỆ ${g[1].toUpperCase()}</div><h3>${g[0]}</h3><div class="badge">${g[2]}</div></div><div class="gym-badge-slot" title="${g[2]}"><img class="gym-badge-art" src="${A+'assets/'+badgeFiles[i]}" alt="${g[2]}" loading="lazy"><small>HUY HIỆU</small></div></div><p><b>${g[3]}</b></p><p>${g[4]}</p><p><b>Thể thức:</b> ${g[5]}</p><img class="gym-photo" src="${A+g[7]}" alt="${g[3]}" loading="lazy" data-lightbox="${g[3]}"></div></article>`).join('');
 $('elite').innerHTML=elite.map((e,i)=>`<article class="profile"><div class="portrait"><img src="${A+e[3]}" alt="${e[0]}" loading="lazy" data-lightbox="${e[0]}"></div><div class="profile-body"><div class="small-label">Tứ Đại Thiên Vương · 0${i+1}</div><h3>${e[0]}</h3><p><b>Chuyên môn: Hệ ${e[1]}</b></p><p>${e[2]}</p><p><b>Pokémon chủ lực:</b> <button class="pokemon-link" data-pokemon="${e[4]}" data-pokemon-id="${e[5]}">${e[4]}</button> (có thể Mega Evolution)</p><p class="muted-note">Có thể sử dụng Tuyệt kỹ Z.</p></div></article>`).join('');
@@ -513,7 +521,7 @@ document.addEventListener('keydown',e=>{
 // lightweight image viewer
 let gallery=[],idx=0,zoom=1;const lb=$('lightbox');function show(){const it=gallery[idx];$('lbImg').src=it.src;$('lbImg').alt=it.caption;$('lbCaption').textContent=it.caption;zoom=1;$('lbImg').style.transform='scale(1)';lb.classList.add('open')}function openImage(img){const all=[...document.querySelectorAll('[data-lightbox]')];gallery=all.map(el=>({src:el.src,caption:el.dataset.lightbox||el.alt}));idx=Math.max(0,all.indexOf(img));show()}document.addEventListener('click',e=>{const img=e.target.closest('[data-lightbox]');if(img)openImage(img)});function step(n){if(!gallery.length)return;idx=(idx+n+gallery.length)%gallery.length;show()}$('lbClose').onclick=()=>lb.classList.remove('open');$('lbPrev').onclick=()=>step(-1);$('lbNext').onclick=()=>step(1);$('zoomIn').onclick=()=>{zoom=Math.min(4,zoom+.25);$('lbImg').style.transform=`scale(${zoom})`};$('zoomOut').onclick=()=>{zoom=Math.max(1,zoom-.25);$('lbImg').style.transform=`scale(${zoom})`};$('zoomReset').onclick=()=>{zoom=1;$('lbImg').style.transform='scale(1)'};lb.onclick=e=>{if(e.target===lb)lb.classList.remove('open')};document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1);if(e.key==='+')$('zoomIn').click();if(e.key==='-')$('zoomOut').click()});
 
-/* Random continuous Pokémon music player. Browsers require a user gesture before sound can start. */
+/* Random continuous Pokémon music player: shuffle all uploaded tracks. */
 (()=>{
  const tracks=[
   {title:'Aim to Be a Pokémon Master · Opening 1',src:'assets/music/pokemon-op1.mp3'},
@@ -523,20 +531,76 @@ let gallery=[],idx=0,zoom=1;const lb=$('lightbox');function show(){const it=gall
   {title:'Pokémon Black & White · Japanese Opening',src:'assets/music/black-white-jp-opening.mp3'},
   {title:'Tình Bạn Vĩnh Cửu · Cindy V',src:'assets/music/tinh-ban-vinh-cuu-cindy-v.mp3'}
  ];
- const audio=document.getElementById('siteAudio'),play=document.getElementById('musicPlay'),next=document.getElementById('musicNext'),title=document.getElementById('musicTitle'),status=document.getElementById('musicStatus'),volume=document.getElementById('musicVolume');
+ const audio=document.getElementById('siteAudio');
+ const play=document.getElementById('musicPlay');
+ const next=document.getElementById('musicNext');
+ const title=document.getElementById('musicTitle');
+ const status=document.getElementById('musicStatus');
  if(!audio||!play||!next)return;
- let bag=[],current=-1,started=false;
- const refill=()=>{bag=tracks.map((_,i)=>i).filter(i=>i!==current);for(let i=bag.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[bag[i],bag[j]]=[bag[j],bag[i]]}};
+ let bag=[],current=-1;
+ const refill=()=>{
+  bag=tracks.map((_,i)=>i).filter(i=>i!==current);
+  for(let i=bag.length-1;i>0;i--){
+   const j=Math.floor(Math.random()*(i+1));
+   [bag[i],bag[j]]=[bag[j],bag[i]];
+  }
+ };
  async function playNext(){
   if(!bag.length)refill();
-  current=bag.pop();const track=tracks[current];audio.src=track.src;title.textContent=track.title;status.textContent='Đang phát ngẫu nhiên · Tự chuyển bài khi kết thúc';
-  try{await audio.play();started=true;play.textContent='Ⅱ Tạm dừng'}catch(e){status.textContent='Chưa phát được tệp nhạc. Kiểm tra thư mục assets/music.';play.textContent='▶ Thử phát lại'}
+  current=bag.pop();
+  const track=tracks[current];
+  audio.src=track.src;
+  title.textContent=track.title;
+  status.textContent='Đang phát ngẫu nhiên · Tự chuyển bài khi kết thúc';
+  try{
+   await audio.play();
+   play.textContent='Ⅱ';
+   status.textContent='Đang phát ngẫu nhiên · Tự chuyển bài khi kết thúc';
+  }catch(err){
+   play.textContent='▶';
+   status.textContent='Trình duyệt chặn tự phát có tiếng · Chạm vào trang hoặc nút phát để bật nhạc';
+  }
  }
- play.addEventListener('click',async()=>{if(audio.paused){if(!audio.src)await playNext();else{try{await audio.play();started=true;play.textContent='Ⅱ Tạm dừng';status.textContent='Đang phát · Tự chuyển bài khi kết thúc'}catch(e){status.textContent='Trình duyệt chưa cho phép phát âm thanh.'}}}else{audio.pause();play.textContent='▶ Tiếp tục'}});
+ play.addEventListener('click',async()=>{
+  if(audio.paused){
+   if(!audio.src){await playNext();return;}
+   try{
+    await audio.play();
+    play.textContent='Ⅱ';
+    status.textContent='Đang phát ngẫu nhiên · Tự chuyển bài khi kết thúc';
+   }catch(err){
+    status.textContent='Chưa thể phát nhạc · Hãy thử nhấn phát lần nữa';
+   }
+  }else{
+   audio.pause();
+   play.textContent='▶';
+   status.textContent='Đã tạm dừng';
+  }
+ });
  next.addEventListener('click',()=>playNext());
  audio.addEventListener('ended',()=>playNext());
- audio.addEventListener('error',()=>{if(audio.src){status.textContent='Không tìm thấy tệp nhạc: '+tracks[current]?.src;play.textContent='▶ Thử phát lại'}});
- volume.addEventListener('input',()=>audio.volume=Number(volume.value));audio.volume=Number(volume.value);
+ audio.addEventListener('error',()=>{
+  if(audio.src){
+   status.textContent='Không tải được tệp nhạc: '+(tracks[current]?.src||'');
+   play.textContent='▶';
+  }
+ });
+ audio.volume=.5;
+ // Attempt audible autoplay on page load. If blocked, the first ordinary page
+ // interaction starts playback; explicit player controls remain available.
+ playNext();
+ const startAfterGesture=()=>{
+  if(!audio.src||!audio.paused)return;
+  audio.play().then(()=>{
+   play.textContent='Ⅱ';
+   status.textContent='Đang phát ngẫu nhiên · Tự chuyển bài khi kết thúc';
+  }).catch(()=>{});
+ };
+ document.addEventListener('pointerdown',e=>{
+  if(e.target.closest('#musicPlay,#musicNext'))return;
+  startAfterGesture();
+ },{once:true});
+ document.addEventListener('keydown',startAfterGesture,{once:true});
 })();
 
 </script>
@@ -591,4 +655,66 @@ let gallery=[],idx=0,zoom=1;const lb=$('lightbox');function show(){const it=gall
 }
 </style>
 
+
+<style>
+/* Keep the professor information cards as-is; center every portrait inside its own image column. */
+#professors .professor-card{grid-template-columns:282px minmax(0,1fr)!important}
+#professors .professor-portrait{
+ width:282px!important;height:auto!important;min-height:100%!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ overflow:hidden!important;padding:0!important;background:#fff!important;
+}
+#professors .professor-portrait img{
+ display:block!important;width:100%!important;height:100%!important;
+ max-width:none!important;max-height:none!important;
+ object-fit:contain!important;object-position:50% 50%!important;
+ margin:0 auto!important;transform:scale(1.32)!important;
+ transform-origin:50% 50%!important;
+}
+#professors .professor-card-body{min-width:0!important}
+@media(max-width:1050px){
+ #professors .professor-card{grid-template-columns:260px minmax(0,1fr)!important}
+ #professors .professor-portrait{width:260px!important}
+}
+@media(max-width:700px){
+ #professors .professor-card{grid-template-columns:175px minmax(0,1fr)!important}
+ #professors .professor-portrait{width:175px!important}
+ #professors .professor-portrait img{transform:scale(1.22)!important}
+}
+@media(max-width:520px){
+ #professors .professor-card{grid-template-columns:132px minmax(0,1fr)!important}
+ #professors .professor-portrait{width:132px!important}
+ #professors .professor-portrait img{transform:scale(1.16)!important}
+}
+/* Tiny floating radio: Poké Ball + track title + two compact controls. */
+.music-player{
+ position:fixed!important;left:12px!important;bottom:12px!important;z-index:80!important;
+ width:min(260px,calc(100vw - 24px))!important;padding:7px 9px!important;
+ border-radius:14px!important;background:rgba(23,46,70,.97)!important;
+}
+.music-player-top{display:flex!important;align-items:center!important;gap:8px!important;margin:0!important}
+.music-disc{
+ position:relative!important;width:28px!important;height:28px!important;flex:0 0 28px!important;
+ border:2px solid #fff!important;border-radius:50%!important;
+ display:grid!important;place-items:center!important;overflow:hidden!important;
+ color:#173047!important;font-size:10px!important;font-weight:900!important;
+ background:linear-gradient(to bottom,#ed6b63 0 45%,#173047 45% 55%,#fff 55% 100%)!important;
+ box-shadow:0 1px 4px #0005!important;
+}
+.music-disc:after{
+ content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;
+ transform:translate(-50%,-50%);border:2px solid #173047;border-radius:50%;
+ background:#fff;box-shadow:0 0 0 1px #fff;
+}
+.music-meta{min-width:0!important;flex:1!important}
+.music-kicker,.music-note{display:none!important}
+.music-title{font-size:10px!important;font-weight:800!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;margin:0!important}
+.music-controls{display:flex!important;gap:4px!important;flex:0 0 auto!important}
+.music-controls button{
+ width:27px!important;min-width:27px!important;height:27px!important;
+ padding:0!important;border-radius:8px!important;font-size:12px!important;
+}
+.music-controls #musicPlay{flex:0 0 27px!important;background:#f1c66f!important;border-color:#f1c66f!important;color:#183149!important}
+@media(max-width:520px){.music-player{left:9px!important;bottom:9px!important;width:min(245px,calc(100vw - 18px))!important;padding:6px 8px!important}}
+</style>
 </body></html>
