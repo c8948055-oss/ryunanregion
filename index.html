@@ -337,9 +337,52 @@ img:not(#lbImg):focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 </style>
 
 <style>.gym-badge-art{display:block;object-fit:contain;background:none!important;background-image:none!important;background-color:transparent!important;}</style>
+<style>
+/* Larger, consistent professor portraits */
+#professors{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px!important}
+#professors .professor-card{grid-template-columns:250px minmax(0,1fr)!important;min-height:460px!important}
+#professors .professor-portrait{min-height:460px!important;height:100%!important;background:linear-gradient(145deg,#eef5f5,#fff)!important}
+#professors .professor-portrait img{width:100%!important;height:460px!important;min-height:460px!important;max-height:460px!important;object-fit:contain!important;object-position:center bottom!important}
+#professors .professor-card-body{padding:22px!important}
+#professors .professor-card-body h3{font-size:22px!important}
+#professors .professor-card-body p,#professors .professor-work{font-size:13px!important}
+@media(max-width:900px){
+ #professors{grid-template-columns:1fr!important}
+ #professors .professor-card{grid-template-columns:220px minmax(0,1fr)!important;min-height:420px!important}
+ #professors .professor-portrait{min-height:420px!important}
+ #professors .professor-portrait img{height:420px!important;min-height:420px!important;max-height:420px!important}
+}
+@media(max-width:700px){
+ #professors .professor-card{grid-template-columns:165px minmax(0,1fr)!important;min-height:350px!important}
+ #professors .professor-portrait{min-height:350px!important}
+ #professors .professor-portrait img{height:350px!important;min-height:350px!important;max-height:350px!important}
+ #professors .professor-card-body{padding:14px!important}
+ #professors .professor-card-body h3{font-size:17px!important}
+ #professors .professor-card-body p,#professors .professor-work{font-size:11px!important}
+}
+@media(max-width:420px){
+ #professors .professor-card{grid-template-columns:125px minmax(0,1fr)!important;min-height:310px!important}
+ #professors .professor-portrait{min-height:310px!important}
+ #professors .professor-portrait img{height:310px!important;min-height:310px!important;max-height:310px!important}
+}
+.music-player{position:fixed;left:18px;bottom:18px;z-index:80;width:min(340px,calc(100vw - 36px));padding:13px 14px;background:rgba(23,46,70,.97);color:#fff;border:1px solid #7891a3;border-radius:16px;box-shadow:0 12px 35px rgba(10,27,42,.28);backdrop-filter:blur(12px)}
+.music-player-top{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.music-disc{width:35px;height:35px;flex:0 0 35px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#f4c66e,#fff0c8);color:#173047;font-size:17px}
+.music-meta{min-width:0;flex:1}.music-kicker{font-size:8px;font-weight:900;letter-spacing:.16em;color:#a8d6db}.music-title{font-size:11px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.music-controls{display:flex;align-items:center;gap:8px}.music-controls button{border:1px solid #7891a3;background:#29465f;color:white;border-radius:9px;min-width:35px;height:34px;cursor:pointer;font-weight:800}.music-controls button:hover{background:#37617d}.music-controls #musicPlay{flex:1;background:#f1c66f;border-color:#f1c66f;color:#183149}.music-controls label{display:flex;align-items:center;gap:5px;font-size:9px;color:#d5e2e8}.music-controls input{width:65px;accent-color:#f1c66f}
+.music-note{font-size:9px;color:#b9cbd5;margin-top:7px;line-height:1.4}
+@media(max-width:520px){.music-player{left:10px;bottom:10px;padding:10px 11px;width:min(310px,calc(100vw - 20px))}}
+</style>
 </head>
 <body>
 <header class="nav"><div class="wrap nav-in"><a class="brand" href="#trang-chu">POKÉMON RYUNAN<small>REGIONAL GUIDE</small></a><button class="menu" id="menuBtn" aria-label="Mở danh mục">☰</button><nav class="links" id="navLinks"><a href="#trang-chu">Trang chủ</a><a href="#ban-do">Bản đồ</a><a href="#dia-danh">Địa danh</a><a href="#tuyen-duong">Tuyến đường</a><a href="#giao-su">Giáo sư</a><a href="#hoi-quan">Hội quán</a><a href="#thien-vuong">Thiên Vương</a><a href="#vo-dich">Vô Địch</a><a href="#lien-doan">Liên đoàn</a></nav></div></header>
+<aside class="music-player" aria-label="Trình phát nhạc Pokémon">
+ <div class="music-player-top"><div class="music-disc">♫</div><div class="music-meta"><div class="music-kicker">RYUNAN RADIO · SHUFFLE PLAY</div><div class="music-title" id="musicTitle">Chưa phát nhạc · Nhấn Bật nhạc</div></div></div>
+ <div class="music-controls"><button id="musicPlay" type="button">▶ Bật nhạc</button><button id="musicNext" type="button" aria-label="Bài tiếp theo">⏭</button><label>Âm lượng <input id="musicVolume" type="range" min="0" max="1" step=".05" value=".55"></label></div>
+ <div class="music-note" id="musicStatus">Phát ngẫu nhiên liên tục · Không lặp bài cho đến khi phát hết danh sách</div>
+ <audio id="siteAudio" preload="none"></audio>
+</aside>
+
 <main>
 <section class="hero" id="trang-chu"><div class="wrap hero-grid"><div><div class="eyebrow">Pokémon Regional Encyclopedia · Việt Nam</div><h1>Chào mừng đến với <span style="color:var(--blue)">Ryunan</span></h1><p class="lead">Một vùng đất trải dài dọc bờ đại dương, nơi núi đá vôi, cao nguyên, rừng nguyên sinh, cố đô di sản và những quần đảo nhiệt đới cùng tạo nên một thế giới Pokémon đa dạng.</p><p></p><div class="actions"><a class="btn primary" href="#ban-do">Khám phá bản đồ</a><a class="btn secondary" href="#hoi-quan">Tìm hiểu 8 Hội quán</a></div><div class="stats"><div><strong>18</strong><span>Địa danh nổi bật</span></div><div><strong>8</strong><span>Giáo sư & viện nghiên cứu</span></div><div><strong>8</strong><span>Hội quán Pokémon</span></div><div><strong>3</strong><span>Tuyến đường biển</span></div></div></div><div class="hero-image"><img src="https://c8948055-oss.github.io/ryunanregion/region-map.webp" alt="Bản đồ vùng Ryunan" loading="eager"></div></div></section>
 <section class="section" id="ban-do"><div class="wrap"><div class="section-head"><div class="eyebrow">01 · Định vị vùng đất</div><h2>Bản đồ Pokémon</h2><p>Ryunan nằm ở phía Nam của bản đồ thế giới Pokémon. Mở từng bản đồ để xem chi tiết địa hình, địa danh và mạng lưới giao thông.</p></div><div class="maps"><article class="map-card"><img src="https://c8948055-oss.github.io/ryunanregion/world-map.webp" alt="Bản đồ thế giới Pokémon" data-lightbox="Bản đồ thế giới Pokémon"><h3>Bản đồ thế giới Pokémon</h3><p>Vị trí tương quan giữa Ryunan và các vùng đất Pokémon khác.</p></article><article class="map-card"><img src="https://c8948055-oss.github.io/ryunanregion/region-map.webp" alt="Bản đồ vùng Ryunan" data-lightbox="Bản đồ vùng Ryunan"><h3>Bản đồ vùng Ryunan</h3><p>Bản đồ địa hình, thành phố, thị trấn, tuyến đường bộ và đường biển.</p></article></div><div class="three"><article class="info"><div class="ico">🏔️</div><h3>Miền Bắc</h3><p>Núi cao hùng vĩ, thung lũng phủ sương và vùng châu thổ sông lớn.</p></article><article class="info"><div class="ico">🏯</div><h3>Miền Trung</h3><p>Dải đất hẹp từ núi ra biển, có đầm phá, di sản cổ và những bãi cát dài.</p></article><article class="info"><div class="ico">🌴</div><h3>Miền Nam</h3><p>Châu thổ màu mỡ, mạng lưới kênh rạch và các cụm đảo ngoài khơi.</p></article></div><div class="three"><article class="info"><h3>Khí hậu nhiệt đới gió mùa</h3><p>Miền Bắc có bốn mùa; miền Trung nắng nóng và thường có bão cuối hè–thu; miền Nam ấm quanh năm với mùa mưa và mùa khô rõ rệt.</p></article><article class="info"><h3>Vùng núi & cao nguyên</h3><p>Khí hậu mát mẻ, nhiều nơi quanh năm phủ sương; địa hình gồm núi đá vôi, cao nguyên bazan và thung lũng.</p></article><article class="info"><h3>Giao thông</h3><p>Đường sắt cao tốc Bắc–Nam, phà và tàu khách từ cảng Koho đến quần đảo Ryuwan, cùng đường mòn xuyên rừng và đèo núi.</p></article></div></div></section>
@@ -430,5 +473,32 @@ document.addEventListener('keydown',e=>{
 });
 // lightweight image viewer
 let gallery=[],idx=0,zoom=1;const lb=$('lightbox');function show(){const it=gallery[idx];$('lbImg').src=it.src;$('lbImg').alt=it.caption;$('lbCaption').textContent=it.caption;zoom=1;$('lbImg').style.transform='scale(1)';lb.classList.add('open')}function openImage(img){const all=[...document.querySelectorAll('[data-lightbox]')];gallery=all.map(el=>({src:el.src,caption:el.dataset.lightbox||el.alt}));idx=Math.max(0,all.indexOf(img));show()}document.addEventListener('click',e=>{const img=e.target.closest('[data-lightbox]');if(img)openImage(img)});function step(n){if(!gallery.length)return;idx=(idx+n+gallery.length)%gallery.length;show()}$('lbClose').onclick=()=>lb.classList.remove('open');$('lbPrev').onclick=()=>step(-1);$('lbNext').onclick=()=>step(1);$('zoomIn').onclick=()=>{zoom=Math.min(4,zoom+.25);$('lbImg').style.transform=`scale(${zoom})`};$('zoomOut').onclick=()=>{zoom=Math.max(1,zoom-.25);$('lbImg').style.transform=`scale(${zoom})`};$('zoomReset').onclick=()=>{zoom=1;$('lbImg').style.transform='scale(1)'};lb.onclick=e=>{if(e.target===lb)lb.classList.remove('open')};document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1);if(e.key==='+')$('zoomIn').click();if(e.key==='-')$('zoomOut').click()});
+
+/* Random continuous Pokémon music player. Browsers require a user gesture before sound can start. */
+(()=>{
+ const tracks=[
+  {title:'Aim to Be a Pokémon Master · Opening 1',src:'assets/music/pokemon-op1.mp3'},
+  {title:'Pokémon Japanese Opening 4',src:'assets/music/pokemon-jp-opening-4.mp3'},
+  {title:'Pokémon Japanese Opening 6',src:'assets/music/pokemon-jp-opening-6.mp3'},
+  {title:'Best Wishes! Season 2 Opening',src:'assets/music/best-wishes-season-2.mp3'},
+  {title:'Pokémon Black & White · Japanese Opening',src:'assets/music/black-white-jp-opening.mp3'},
+  {title:'Tình Bạn Vĩnh Cửu · Cindy V',src:'assets/music/tinh-ban-vinh-cuu-cindy-v.mp3'}
+ ];
+ const audio=document.getElementById('siteAudio'),play=document.getElementById('musicPlay'),next=document.getElementById('musicNext'),title=document.getElementById('musicTitle'),status=document.getElementById('musicStatus'),volume=document.getElementById('musicVolume');
+ if(!audio||!play||!next)return;
+ let bag=[],current=-1,started=false;
+ const refill=()=>{bag=tracks.map((_,i)=>i).filter(i=>i!==current);for(let i=bag.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[bag[i],bag[j]]=[bag[j],bag[i]]}};
+ async function playNext(){
+  if(!bag.length)refill();
+  current=bag.pop();const track=tracks[current];audio.src=track.src;title.textContent=track.title;status.textContent='Đang phát ngẫu nhiên · Tự chuyển bài khi kết thúc';
+  try{await audio.play();started=true;play.textContent='Ⅱ Tạm dừng'}catch(e){status.textContent='Chưa phát được tệp nhạc. Kiểm tra thư mục assets/music.';play.textContent='▶ Thử phát lại'}
+ }
+ play.addEventListener('click',async()=>{if(audio.paused){if(!audio.src)await playNext();else{try{await audio.play();started=true;play.textContent='Ⅱ Tạm dừng';status.textContent='Đang phát · Tự chuyển bài khi kết thúc'}catch(e){status.textContent='Trình duyệt chưa cho phép phát âm thanh.'}}}else{audio.pause();play.textContent='▶ Tiếp tục'}});
+ next.addEventListener('click',()=>playNext());
+ audio.addEventListener('ended',()=>playNext());
+ audio.addEventListener('error',()=>{if(audio.src){status.textContent='Không tìm thấy tệp nhạc: '+tracks[current]?.src;play.textContent='▶ Thử phát lại'}});
+ volume.addEventListener('input',()=>audio.volume=Number(volume.value));audio.volume=Number(volume.value);
+})();
+
 </script>
 </body></html>
