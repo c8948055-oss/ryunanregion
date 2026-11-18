@@ -373,6 +373,45 @@ img:not(#lbImg):focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .music-note{font-size:9px;color:#b9cbd5;margin-top:7px;line-height:1.4}
 @media(max-width:520px){.music-player{left:10px;bottom:10px;padding:10px 11px;width:min(310px,calc(100vw - 20px))}}
 </style>
+<style>
+/* Professor portraits: same large portrait frame for all eight professors */
+#professors.profiles{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px!important}
+#professors .professor-card{display:grid!important;grid-template-columns:282px minmax(0,1fr)!important;min-height:654px!important;align-items:stretch!important}
+#professors .professor-portrait{width:282px!important;height:654px!important;min-height:654px!important;overflow:hidden!important;display:flex!important;align-items:stretch!important;justify-content:center!important;background:linear-gradient(145deg,#f3f7f8,#fff)!important}
+#professors .professor-portrait img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center center!important}
+#professors .professor-card-body{min-width:0!important;padding:22px!important;align-self:center!important}
+@media(max-width:1050px){
+ #professors.profiles{grid-template-columns:1fr!important}
+ #professors .professor-card{grid-template-columns:260px minmax(0,1fr)!important;min-height:600px!important}
+ #professors .professor-portrait{width:260px!important;height:600px!important;min-height:600px!important}
+}
+@media(max-width:650px){
+ #professors .professor-card{grid-template-columns: minmax(130px,38%) minmax(0,1fr)!important;min-height:410px!important}
+ #professors .professor-portrait{width:100%!important;height:410px!important;min-height:410px!important}
+ #professors .professor-portrait img{object-fit:cover!important}
+ #professors .professor-card-body{padding:12px!important}
+ #professors .professor-card-body h3{font-size:16px!important}
+ #professors .professor-card-body p,#professors .professor-work{font-size:10px!important;line-height:1.5!important}
+}
+@media(max-width:420px){
+ #professors .professor-card{grid-template-columns:112px minmax(0,1fr)!important;min-height:360px!important}
+ #professors .professor-portrait{height:360px!important;min-height:360px!important}
+}
+/* Minimal floating music control */
+.music-player{left:12px!important;bottom:12px!important;width:248px!important;max-width:calc(100vw - 24px)!important;padding:7px 9px!important;border-radius:13px!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto auto!important;grid-template-rows:27px 24px!important;column-gap:6px!important;row-gap:3px!important;align-items:center!important}
+.music-player-top{grid-column:1/-1!important;display:flex!important;align-items:center!important;gap:7px!important;margin:0!important;min-width:0!important}
+.music-disc{width:23px!important;height:23px!important;flex:0 0 23px!important;font-size:12px!important}
+.music-kicker{display:none!important}
+.music-title{font-size:9px!important;margin:0!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.music-controls{display:contents!important}
+.music-controls button{height:24px!important;min-width:26px!important;padding:0 6px!important;border-radius:7px!important;font-size:10px!important}
+.music-controls #musicPlay{grid-column:1!important;grid-row:2!important;width:100%!important;min-width:0!important}
+.music-controls #musicNext{grid-column:2!important;grid-row:2!important}
+.music-controls label{grid-column:3!important;grid-row:2!important;font-size:0!important;gap:0!important}
+.music-controls input{width:38px!important;height:12px!important}
+.music-note{display:none!important}
+@media(max-width:520px){.music-player{left:8px!important;bottom:8px!important;width:224px!important;padding:6px 8px!important}}
+</style>
 </head>
 <body>
 <header class="nav"><div class="wrap nav-in"><a class="brand" href="#trang-chu">POKÉMON RYUNAN<small>REGIONAL GUIDE</small></a><button class="menu" id="menuBtn" aria-label="Mở danh mục">☰</button><nav class="links" id="navLinks"><a href="#trang-chu">Trang chủ</a><a href="#ban-do">Bản đồ</a><a href="#dia-danh">Địa danh</a><a href="#tuyen-duong">Tuyến đường</a><a href="#giao-su">Giáo sư</a><a href="#hoi-quan">Hội quán</a><a href="#thien-vuong">Thiên Vương</a><a href="#vo-dich">Vô Địch</a><a href="#lien-doan">Liên đoàn</a></nav></div></header>
