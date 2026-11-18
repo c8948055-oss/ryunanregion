@@ -540,4 +540,55 @@ let gallery=[],idx=0,zoom=1;const lb=$('lightbox');function show(){const it=gall
 })();
 
 </script>
+
+<style>
+/* Professor cards: preserve the normal information-card size; enlarge only the portrait artwork */
+#professors .professor-card{
+  grid-template-columns:282px minmax(0,1fr)!important;
+  min-height:0!important;
+  height:auto!important;
+  align-items:stretch!important;
+}
+#professors .professor-portrait{
+  width:282px!important;
+  height:auto!important;
+  min-height:0!important;
+  align-self:stretch!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+  background:#fff!important;
+}
+#professors .professor-portrait img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  transform:scale(1.38)!important;
+  transform-origin:center center!important;
+  margin:0!important;
+}
+#professors .professor-card-body{min-width:0!important}
+@media(max-width:900px){
+  #professors .professor-card{grid-template-columns:250px minmax(0,1fr)!important}
+  #professors .professor-portrait{width:250px!important}
+  #professors .professor-portrait img{transform:scale(1.34)!important}
+}
+@media(max-width:700px){
+  #professors .professor-card{grid-template-columns:175px minmax(0,1fr)!important}
+  #professors .professor-portrait{width:175px!important}
+  #professors .professor-portrait img{transform:scale(1.25)!important}
+}
+@media(max-width:520px){
+  #professors .professor-card{grid-template-columns:132px minmax(0,1fr)!important}
+  #professors .professor-portrait{width:132px!important}
+  #professors .professor-portrait img{transform:scale(1.18)!important}
+}
+</style>
+
 </body></html>
